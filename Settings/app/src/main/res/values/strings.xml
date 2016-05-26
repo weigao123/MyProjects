@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Settings</string>
+    <string name="setting">Setting</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="audio_profiles">Audio profile</string>
+    <string name="wifi">Wifi</string>
+    <string name="data_usage">Data usage</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="sensor">Sensor</string>
+    <string name="ptt">PTT talk</string>
+    <string name="display">Display</string>
+    <string name="light">Light</string>
+    <string name="security_and_password">Security and password</string>
+    <string name="date_time">Data &amp; time</string>
+    <string name="language">Language</string>
+    <string name="about_bike">About bike</string>
+    <string name="unbind_bike">Unbind bike</string>
+
+    <!--security-->
+    <string name="lockscreen_password">锁屏密码</string>
+    <string name="lockscreen_password_tip">在锁屏时需输入密码或指纹</string>
+    <string name="password_manager">密码设定</string>
+    <string name="fingerprint_manager">指纹管理</string>
+    <string name="password_input">输入密码</string>
+    <string name="password_input_check_new">验证新密码</string>
+    <string name="password_not_match">密码不一致, 请重新输入</string>
+    <string name="password_set_success">密码设定成功</string>
+
+
+
+
+
+
+
+
+
+
+    <string name="password_keyboard_0">0</string>
+    <string name="password_keyboard_1">1</string>
+    <string name="password_keyboard_2">2</string>
+    <string name="password_keyboard_3">3</string>
+    <string name="password_keyboard_4">4</string>
+    <string name="password_keyboard_5">5</string>
+    <string name="password_keyboard_6">6</string>
+    <string name="password_keyboard_7">7</string>
+    <string name="password_keyboard_8">8</string>
+    <string name="password_keyboard_9">9</string>
+</resources>

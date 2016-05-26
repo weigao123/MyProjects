@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">设置</string>
+    <string name="setting">设置</string>
+    <string name="delete">删除</string>
+    <string name="cancel">取消</string>
+
+    <string name="audio_profiles">声音</string>
+    <string name="wifi">WLAN</string>
+    <string name="data_usage">流量</string>
+    <string name="bluetooth">蓝牙</string>
+    <string name="sensor">传感器</string>
+    <string name="ptt">PTT对讲</string>
+    <string name="display">显示</string>
+    <string name="light">灯光</string>
+    <string name="security_and_password">安全及密码设置</string>
+    <string name="date_time">日期和时间</string>
+    <string name="language">语言选择</string>
+    <string name="about_bike">关于自行车</string>
+    <string name="unbind_bike">解除绑定</string>
+    
+    <!--security-->
+    <string name="lockscreen_password">锁屏密码</string>
+    <string name="lockscreen_password_tip">在锁屏时需输入密码或指纹</string>
+    <string name="password_manager">密码设定</string>
+    <string name="fingerprint_manager">指纹管理</string>
+    <string name="password_input">输入密码</string>
+    <string name="password_input_check_new">验证新密码</string>
+    <string name="password_not_match">密码不一致, 请重新输入</string>
+    <string name="password_set_success">密码设定成功</string>
+</resources>
