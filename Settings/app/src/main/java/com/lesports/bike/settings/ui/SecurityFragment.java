@@ -66,13 +66,13 @@ public class SecurityFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void onLockView() {
-        mSwitchButton.onSwitch();
+        mSwitchButton.setSwitchOn();
         mPasswordManager.setTextColor(getResources().getColor(R.color.colorWhite));
         mFingerprintManager.setTextColor(getResources().getColor(R.color.colorWhite));
     }
 
     private void offLockView() {
-        mSwitchButton.offSwitch();
+        mSwitchButton.setSwitchOff();
         mPasswordManager.setTextColor(getResources().getColor(R.color.colorGray));
         mFingerprintManager.setTextColor(getResources().getColor(R.color.colorGray));
     }

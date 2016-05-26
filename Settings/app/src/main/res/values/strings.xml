@@ -5,7 +5,7 @@
     <string name="cancel">Cancel</string>
 
     <string name="audio_profiles">Audio profile</string>
-    <string name="wifi">Wifi</string>
+    <string name="wifi">WLAN</string>
     <string name="data_usage">Data usage</string>
     <string name="bluetooth">Bluetooth</string>
     <string name="sensor">Sensor</string>
@@ -28,7 +28,9 @@
     <string name="password_not_match">密码不一致, 请重新输入</string>
     <string name="password_set_success">密码设定成功</string>
 
-
+    <!--wifi-->
+    <string name="wifi_on">开</string>
+    <string name="wifi_off">关</string>
 
 
 

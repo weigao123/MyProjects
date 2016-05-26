@@ -49,7 +49,7 @@ public class SwitchButton extends FrameLayout {
             mOffImage.setImageDrawable(offDrawable);
         }
         if (switchStatus == 1) {
-            offSwitch();
+            setSwitchOff();
         }
     }
 
@@ -63,7 +63,7 @@ public class SwitchButton extends FrameLayout {
     /**
      * 打开开关
      */
-    public void onSwitch(){
+    public void setSwitchOn(){
         mOnImage.setVisibility(View.VISIBLE);
         mOffImage.setVisibility(View.INVISIBLE);
     }
@@ -71,7 +71,7 @@ public class SwitchButton extends FrameLayout {
     /**
      * 关闭开关
      */
-    public void offSwitch(){
+    public void setSwitchOff(){
         mOnImage.setVisibility(View.INVISIBLE);
         mOffImage.setVisibility(View.VISIBLE);
     }

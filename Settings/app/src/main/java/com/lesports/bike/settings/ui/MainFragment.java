@@ -1,7 +1,6 @@
 package com.lesports.bike.settings.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -103,7 +102,7 @@ public class MainFragment extends BaseFragment implements AdapterView.OnItemClic
             ViewHolder viewHolder;
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(
-                        R.layout.setting_list_item, null);
+                        R.layout.home_list_item, null);
                 LinearLayout linearLayout = (LinearLayout) convertView;
                 ViewGroup.LayoutParams a = linearLayout.getLayoutParams();
                 viewHolder = new ViewHolder();
