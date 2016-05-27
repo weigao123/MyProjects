@@ -35,7 +35,66 @@
             android:layout_height="60.6dp"
             android:gravity="center_vertical"
             android:textSize="@dimen/font_smaller_than_standard"
-            android:text="@string/ptt_please_open"/>
+            android:text="@string/ptt_please_open"
+            android:visibility="invisible"/>
+        <LinearLayout
+            android:id="@+id/ptt_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13.3dp"
+                android:layout_marginBottom="6.7dp"
+                android:layout_marginStart="4dp"
+                android:textSize="@dimen/font_smaller_than_standard"
+                android:textColor="@color/colorGray3"
+                android:text="@string/ptt_channel_select"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.3dp"
+                android:background="@color/colorGray" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="54.7dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5.3dp"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_loading_white"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.3dp"
+                android:background="@color/colorGray" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26.7dp"
+                android:layout_marginBottom="6.7dp"
+                android:layout_marginStart="4dp"
+                android:textSize="@dimen/font_smaller_than_standard"
+                android:textColor="@color/colorGray3"
+                android:text="@string/ptt_channel"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.3dp"
+                android:background="@color/colorGray" />
+            <ListView
+                android:id="@+id/ptt_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ListView>
+            
+        </LinearLayout>
 
     </FrameLayout>
 
