@@ -8,4 +8,5 @@
     <color name="colorGray">#4a4a4a</color>
     <color name="colorGray2">#1c1c1c</color>
     <color name="colorTransparent">#00000000</color>
+    <color name="colorTransparentBackground">#b2000000</color>
 </resources>

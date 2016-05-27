@@ -34,9 +34,11 @@ public class ActivityUtils {
         context.startActivity(intent);
     }
 
-    public static void startFragmentActivityForResult(Context context, Bundle bundle, Class fragmentClass) {
-        Intent intent = new Intent(context, DetailActivity.class);
-        intent.putExtra(BaseFragment.FRAGMENT_CLASS, fragmentClass);
-        //context.startActivityForResult(intent, 3, bundle);
+    public static void startActivity(Context context, Class activityClass, Bundle bundle) {
+        Intent intent = new Intent(context, activityClass);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        context.startActivity(intent);
     }
 }

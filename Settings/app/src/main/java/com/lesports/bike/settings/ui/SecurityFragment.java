@@ -54,7 +54,7 @@ public class SecurityFragment extends BaseFragment implements View.OnClickListen
             case R.id.password_manager:
                 if (mSwitchButton.isSwitchOn()) {
                     bundle.putInt(PasswordFragment.PASSWORD_TODO, PasswordFragment.PASSWORD_MODIFY);
-                    ActivityUtils.startFragmentActivity(getActivity(), PasswordFragment.class);
+                    ActivityUtils.startFragmentActivity(getActivity(), PasswordFragment.class, bundle);
                 }
                 break;
             case R.id.fingerprint_manager:
@@ -66,13 +66,13 @@ public class SecurityFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void onLockView() {
-        mSwitchButton.setSwitchOn();
+        mSwitchButton.setSwitchStatus(true);
         mPasswordManager.setTextColor(getResources().getColor(R.color.colorWhite));
         mFingerprintManager.setTextColor(getResources().getColor(R.color.colorWhite));
     }
 
     private void offLockView() {
-        mSwitchButton.setSwitchOff();
+        mSwitchButton.setSwitchStatus(false);
         mPasswordManager.setTextColor(getResources().getColor(R.color.colorGray));
         mFingerprintManager.setTextColor(getResources().getColor(R.color.colorGray));
     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +16,21 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lesports.bike.settings.R;
+import com.lesports.bike.settings.widget.SwitchButton;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by gwball on 2016/5/25.
  */
-public class WifiFragment extends BaseFragment implements AdapterView.OnItemClickListener {
+public class WifiFragment extends BaseFragment implements AdapterView.OnItemClickListener, View.OnClickListener {
     private WifiManager mWifiManager;
-    private List<ScanResult> mdata;
+    private List<ScanResult> mdata = new ArrayList<>();
+    private SwitchButton mSwitchButton;
 
     @Override
     protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,16 +45,30 @@ public class WifiFragment extends BaseFragment implements AdapterView.OnItemClic
 
     @Override
     public void initViewAndData() {
-        mWifiManager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
-
-        ListView listView = (ListView) getActivity().findViewById(R.id.main_list);
+        mSwitchButton = (SwitchButton)getActivity().findViewById(R.id.wifi_switch);
+        mSwitchButton.setOnClickListener(this);
+        ListView listView = (ListView) getActivity().findViewById(R.id.wifi_list);
         ListAdapter adapter = new ListAdapter(getActivity(), 0, mdata);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+        mWifiManager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
+        if (mWifiManager.isWifiEnabled()) {
+            mWifiManager.startScan();
+        }
+
+        mSwitchButton.setSwitchStatus(mWifiManager.isWifiEnabled());
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    }
+
+    @Override
+    public void onClick(View v) {
+        boolean result = mWifiManager.setWifiEnabled(!mSwitchButton.isSwitchOn());
+        if (result) {
+            //mSwitchButton.setSwitchStatus(!mSwitchButton.isSwitchOn());
+        }
     }
 
     private class ListAdapter extends ArrayAdapter<ScanResult> {

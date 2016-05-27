@@ -49,7 +49,7 @@ public class SwitchButton extends FrameLayout {
             mOffImage.setImageDrawable(offDrawable);
         }
         if (switchStatus == 1) {
-            setSwitchOff();
+            setSwitchStatus(true);
         }
     }
 
@@ -61,18 +61,16 @@ public class SwitchButton extends FrameLayout {
     }
 
     /**
-     * 打开开关
+     * 切换开关
      */
-    public void setSwitchOn(){
-        mOnImage.setVisibility(View.VISIBLE);
-        mOffImage.setVisibility(View.INVISIBLE);
+    public void setSwitchStatus(boolean status) {
+        if (status) {
+            mOnImage.setVisibility(View.VISIBLE);
+            mOffImage.setVisibility(View.INVISIBLE);
+        } else {
+            mOnImage.setVisibility(View.INVISIBLE);
+            mOffImage.setVisibility(View.VISIBLE);
+        }
     }
 
-    /**
-     * 关闭开关
-     */
-    public void setSwitchOff(){
-        mOnImage.setVisibility(View.INVISIBLE);
-        mOffImage.setVisibility(View.VISIBLE);
-    }
 }

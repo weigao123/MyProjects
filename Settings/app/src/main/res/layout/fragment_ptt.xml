@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:paddingStart="@dimen/detail_activity_padding"
+        android:paddingEnd="@dimen/detail_activity_padding"
+        android:background="@color/colorGray2">
+        <TextView
+            android:id="@+id/ptt_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/wifi_off" />
+        <com.lesports.bike.settings.widget.SwitchButton
+            android:id="@+id/ptt_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" >
+        </com.lesports.bike.settings.widget.SwitchButton>
+    </RelativeLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/detail_activity_padding"
+        android:paddingEnd="@dimen/detail_activity_padding">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60.6dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/font_smaller_than_standard"
+            android:text="@string/ptt_please_open"/>
+
+    </FrameLayout>
+
+</LinearLayout>

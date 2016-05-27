@@ -31,6 +31,7 @@
         android:paddingStart="@dimen/detail_activity_padding"
         android:paddingEnd="@dimen/detail_activity_padding">
         <ListView
+            android:id="@+id/wifi_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 

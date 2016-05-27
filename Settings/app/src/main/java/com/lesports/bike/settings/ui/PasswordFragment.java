@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.android.internal.widget.LockPatternUtils;
 import com.lesports.bike.settings.R;
+import com.lesports.bike.settings.utils.ActivityUtils;
 import com.lesports.bike.settings.widget.PasswordInput;
 
 /**
@@ -27,10 +28,12 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
     private LockPatternUtils mLockPatternUtils;
     PasswordInput mPasswordInput;
     String[] mInput = new String[]{"", "", "", ""};
-    private TextView mPasswordNotMatchTip;
-    private TextView mPasswordCheckNewTip;
+
+    private TextView mPasswordTitle;
+    private TextView mPasswordWrongTip;
+
     private int mTodo = 0;
-    private String mLastInput;
+    private String mLastInput = "";
     private Handler mHandle;
 
     @Override
@@ -58,57 +61,78 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
         getActivity().findViewById(R.id.password_button_cancel).setOnClickListener(this);
         getActivity().findViewById(R.id.password_button_delete).setOnClickListener(this);
         mPasswordInput = (PasswordInput)getActivity().findViewById(R.id.password_input);
-        mPasswordNotMatchTip = (TextView)getActivity().findViewById(R.id.password_not_match);
-        mPasswordCheckNewTip = (TextView)getActivity().findViewById(R.id.password_check_new);
+        mPasswordWrongTip = (TextView)getActivity().findViewById(R.id.password_wrong_tip);
+        mPasswordTitle = (TextView)getActivity().findViewById(R.id.password_title);
 
         mLockPatternUtils = new LockPatternUtils(getActivity());
         mTodo = getActivity().getIntent().getIntExtra(PasswordFragment.PASSWORD_TODO, 0);
         mHandle = new Handler();
+        switch (mTodo) {
+            case PASSWORD_ON_LOCK:
+                mPasswordTitle.setText(R.string.password_input);
+                mPasswordWrongTip.setText(R.string.password_not_match);
+                break;
+            case PASSWORD_OFF_LOCK:
+                mPasswordTitle.setText(R.string.password_close);
+                mPasswordWrongTip.setText(R.string.password_wrong);
+                break;
+            case PASSWORD_MODIFY:
+                mPasswordTitle.setText(R.string.password_verify);
+                mPasswordWrongTip.setText(R.string.password_wrong);
+        }
     }
 
     private void verifyPassword() {
-        if ("".equals(mInput[3])) {
-            return;
-        }
-
         String password = "";
         for (int i = 0; i < 4; i++) {
             password += mInput[i];
         }
-
-        if (mTodo == PASSWORD_ON_LOCK) {
-            if (mLastInput == null) {
-                mLastInput = password;
-                clearPassword();
-                mPasswordCheckNewTip.setText(R.string.password_input_check_new);
-                return;
-            }
-            if (!password.equals(mLastInput)) {
-                mPasswordNotMatchTip.setVisibility(View.VISIBLE);
-                mLastInput = null;
-                clearPassword();
-                mPasswordCheckNewTip.setText(R.string.password_input);
-                return;
-            }
-            if (mLockPatternUtils.checkPassword(password)) {
+        switch (mTodo) {
+            case PASSWORD_ON_LOCK:
+                if ("".equals(mLastInput)) {
+                    mLastInput = password;
+                    clearPasswordView();
+                    mPasswordTitle.setText(R.string.password_input_check_new);
+                    return;
+                }
+                if (!password.equals(mLastInput)) {
+                    mPasswordWrongTip.setVisibility(View.VISIBLE);
+                    mLastInput = "";
+                    clearPasswordView();
+                    mPasswordTitle.setText(R.string.password_input);
+                    return;
+                }
                 mLockPatternUtils.saveLockPassword(password, DevicePolicyManager.PASSWORD_QUALITY_NUMERIC, false);
-                Toast.makeText(getActivity(), getResources().getText(R.string.password_set_success), Toast.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putString(TranslucentActivity.TEXT_TIP, getResources().getString(R.string.password_set_success));
+                ActivityUtils.startActivity(getActivity(), TranslucentActivity.class, bundle);
                 getActivity().finish();
-            }
-        }
-        if (mTodo == PASSWORD_OFF_LOCK) {
-            if (mLockPatternUtils.checkPassword(password)) {
-                mLockPatternUtils.clearLock(true);
-                getActivity().finish();
-            } else {
-                clearPassword();
-                Toast.makeText(getActivity(), "密码错误", Toast.LENGTH_SHORT).show();
-            }
-        }
+                break;
+            case PASSWORD_OFF_LOCK:
+                if (mLockPatternUtils.checkPassword(password)) {
+                    mLockPatternUtils.clearLock(true);
+                    getActivity().finish();
+                } else {
+                    clearPasswordView();
+                    mPasswordWrongTip.setVisibility(View.VISIBLE);
+                }
+                break;
 
+            case PASSWORD_MODIFY:
+                if (mLockPatternUtils.checkPassword(password)) {
+                    clearPasswordView();
+                    mTodo = PASSWORD_ON_LOCK;
+                    mPasswordTitle.setText(R.string.password_input);
+                    mPasswordWrongTip.setText(R.string.password_not_match);
+                } else {
+                    clearPasswordView();
+                    mPasswordWrongTip.setVisibility(View.VISIBLE);
+                }
+                break;
+        }
     }
 
-    private void clearPassword() {
+    private void clearPasswordView() {
         for (int i = 0; i < 4; i++) {
             mInput[i] = "";
             mPasswordInput.setPasswordDot(-1);
@@ -169,12 +193,14 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
                 break;
             }
         }
-        mPasswordNotMatchTip.setVisibility(View.INVISIBLE);
-        mHandle.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                verifyPassword();
-            }
-        }, 50);
+        mPasswordWrongTip.setVisibility(View.INVISIBLE);
+        if (!"".equals(mInput[3])) {
+            mHandle.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    verifyPassword();
+                }
+            }, 50);
+        }
     }
 }

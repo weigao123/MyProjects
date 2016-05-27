@@ -2,6 +2,7 @@ package com.lesports.bike.settings.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,6 +90,7 @@ public class MainFragment extends BaseFragment implements AdapterView.OnItemClic
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,
             long id) {
+        Log.d("wei.gao", "position: "+position);
         ActivityUtils.startFragmentActivity(getActivity(), classes[position]);
     }
 
@@ -103,8 +105,6 @@ public class MainFragment extends BaseFragment implements AdapterView.OnItemClic
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(
                         R.layout.home_list_item, null);
-                LinearLayout linearLayout = (LinearLayout) convertView;
-                ViewGroup.LayoutParams a = linearLayout.getLayoutParams();
                 viewHolder = new ViewHolder();
                 viewHolder.imageView = (ImageView) convertView
                         .findViewById(R.id.setting_list_image_view);
