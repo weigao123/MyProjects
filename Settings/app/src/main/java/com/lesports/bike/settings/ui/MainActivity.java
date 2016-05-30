@@ -1,7 +1,11 @@
 package com.lesports.bike.settings.ui;
 
 import android.app.Fragment;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -26,28 +30,21 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_root);
 
 
-//        View mView = LayoutInflater.from(this).inflate(R.layout.activity_translucent, null);
-//
-//        Context mContext = getApplicationContext();
-//        WindowManager mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
-//        final WindowManager.LayoutParams params = new WindowManager.LayoutParams();
-//        params.type = WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG;
-//        int flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
-//        // | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
-//        // 如果设置了WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE，弹出的View收不到Back键的事件
-//        params.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
-//        params.alpha = 80;
-//        // 不设置这个弹出框的透明遮罩显示为黑色
-//        params.format = 1;
-//        // FLAG_NOT_TOUCH_MODAL不阻塞事件传递到后面的窗口
-//        // 设置 FLAG_NOT_FOCUSABLE 悬浮窗口较小时，后面的应用图标由不可长按变为可长按
-//        // 不设置这个flag的话，home页的划屏会有问题
-//
-//        params.width = WindowManager.LayoutParams.MATCH_PARENT;
-//        params.height = ViewGroup.LayoutParams.MATCH_PARENT;
-//
-//        params.gravity = Gravity.CENTER;
-//        mWindowManager.addView(mView, params);
+        NotificationManager manager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Intent intent = new Intent(this, MainActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
+        Notification notification = new Notification.Builder(this)
+                .setContentIntent(pi)
+                .setSmallIcon(R.drawable.bike)
+                .setContentTitle("标题")
+                .setContentText("内容")
+                .setTicker("状态栏上显示")   // 状态栏上显示
+                .setWhen(System.currentTimeMillis())
+                //.setOngoing(true)
+                .setAutoCancel(true)
 
+                .build();
+        manager.notify(1, notification);
     }
 }

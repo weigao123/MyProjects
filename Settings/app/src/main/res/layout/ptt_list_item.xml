@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="41.3dp" >
+    android:layout_height="wrap_content"
+    android:minHeight="41.3dp">
     <TextView
         android:id="@+id/ptt_item_channel"
         android:layout_width="wrap_content"

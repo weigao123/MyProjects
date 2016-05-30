@@ -5,6 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lesports.bike.settings.R;
+import com.lesports.bike.settings.utils.PopupUtils;
+
 /**
  * Created by gwball on 2016/5/25.
  */
@@ -23,4 +26,6 @@ public class AudioFragment extends BaseFragment {
     protected String getTitleName() {
         return null;
     }
+
+
 }

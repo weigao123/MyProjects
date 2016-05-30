@@ -39,7 +39,8 @@
     <string name="ptt_please_open">打开PTT对讲功能可选择对讲频道</string>
     <string name="ptt_channel_select">当前选择频道：</string>
     <string name="ptt_channel">频道</string>
-
+    <string name="ptt_on">开</string>
+    <string name="ptt_off">关</string>
 
 
 </resources>

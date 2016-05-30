@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.android.internal.widget.LockPatternUtils;
 import com.lesports.bike.settings.R;
 import com.lesports.bike.settings.utils.ActivityUtils;
+import com.lesports.bike.settings.utils.PopupUtils;
 import com.lesports.bike.settings.widget.PasswordInput;
 
 /**
@@ -103,21 +104,17 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
                     return;
                 }
                 mLockPatternUtils.saveLockPassword(password, DevicePolicyManager.PASSWORD_QUALITY_NUMERIC, false);
-                Bundle bundle = new Bundle();
-                bundle.putString(TranslucentActivity.TEXT_TIP, getResources().getString(R.string.password_set_success));
-                ActivityUtils.startActivity(getActivity(), TranslucentActivity.class, bundle);
-                getActivity().finish();
+                PopupUtils.popupOverlayView(getActivity(), R.string.password_set_success, true);
                 break;
             case PASSWORD_OFF_LOCK:
                 if (mLockPatternUtils.checkPassword(password)) {
                     mLockPatternUtils.clearLock(true);
-                    getActivity().finish();
+                    PopupUtils.popupOverlayView(getActivity(), R.string.password_close, true);
                 } else {
                     clearPasswordView();
                     mPasswordWrongTip.setVisibility(View.VISIBLE);
                 }
                 break;
-
             case PASSWORD_MODIFY:
                 if (mLockPatternUtils.checkPassword(password)) {
                     clearPasswordView();

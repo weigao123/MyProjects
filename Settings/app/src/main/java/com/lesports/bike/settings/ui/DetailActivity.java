@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.lesports.bike.settings.R;
+import com.lesports.bike.settings.utils.PopupUtils;
 
 /**
  * Created by gaowei3 on 2016/5/16.

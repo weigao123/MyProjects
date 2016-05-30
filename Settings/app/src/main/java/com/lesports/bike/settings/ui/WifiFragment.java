@@ -4,14 +4,12 @@ import android.content.Context;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,17 +17,14 @@ import com.lesports.bike.settings.R;
 import com.lesports.bike.settings.widget.SwitchButton;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * Created by gwball on 2016/5/25.
  */
 public class WifiFragment extends BaseFragment implements AdapterView.OnItemClickListener, View.OnClickListener {
     private WifiManager mWifiManager;
-    private List<ScanResult> mdata = new ArrayList<>();
+    private List<ScanResult> mdata = new ArrayList<ScanResult>();
     private SwitchButton mSwitchButton;
 
     @Override

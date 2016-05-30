@@ -31,17 +31,19 @@
         android:paddingStart="@dimen/detail_activity_padding"
         android:paddingEnd="@dimen/detail_activity_padding">
         <TextView
+            android:id="@+id/ptt_please_open"
             android:layout_width="wrap_content"
             android:layout_height="60.6dp"
             android:gravity="center_vertical"
             android:textSize="@dimen/font_smaller_than_standard"
             android:text="@string/ptt_please_open"
-            android:visibility="invisible"/>
+            android:visibility="visible"/>
         <LinearLayout
-            android:id="@+id/ptt_container"
+            android:id="@+id/ptt_open_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="invisible">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,16 +61,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="54.7dp">
                 <TextView
+                    android:id="@+id/ptt_channel_select"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="5.3dp"/>
                 <ImageView
+                    android:id="@+id/ptt_loading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/icon_loading_white"/>
+                    android:src="@drawable/loading"/>
+                <ImageView
+                    android:id="@+id/ptt_loaded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/done"/>
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -90,7 +101,8 @@
             <ListView
                 android:id="@+id/ptt_listview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:listSelector="@color/colorTransparent">
 
             </ListView>
             
