@@ -28,23 +28,5 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_root);
-
-
-        NotificationManager manager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent intent = new Intent(this, MainActivity.class);
-        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
-        Notification notification = new Notification.Builder(this)
-                .setContentIntent(pi)
-                .setSmallIcon(R.drawable.bike)
-                .setContentTitle("标题")
-                .setContentText("内容")
-                .setTicker("状态栏上显示")   // 状态栏上显示
-                .setWhen(System.currentTimeMillis())
-                //.setOngoing(true)
-                .setAutoCancel(true)
-
-                .build();
-        manager.notify(1, notification);
     }
 }

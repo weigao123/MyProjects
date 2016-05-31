@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.lesports.bike.settings.R;
-import com.lesports.bike.settings.utils.PopupUtils;
 
 /**
  * Created by gaowei3 on 2016/5/16.
  */
 public class DetailActivity extends BaseActivity {
+
+    private Class<?> mCurrent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +22,15 @@ public class DetailActivity extends BaseActivity {
     @Override
     protected Fragment createFragment() {
         Intent intent = getIntent();
+        mCurrent = (Class<?>)intent.getSerializableExtra(BaseFragment.FRAGMENT_CLASS);
+        return Fragment.instantiate(this, mCurrent.getName(), null);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
         Class<?> target = (Class<?>)intent.getSerializableExtra(BaseFragment.FRAGMENT_CLASS);
-        return Fragment.instantiate(this, target.getName(), null);
+        if (!mCurrent.equals(target)) {
+            changeFragment(Fragment.instantiate(this, target.getName(), null));
+        }
     }
 }

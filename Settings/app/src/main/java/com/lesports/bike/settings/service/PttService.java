@@ -1,6 +1,7 @@
 package com.lesports.bike.settings.service;
 
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -13,9 +14,14 @@ import android.os.IBinder;
 import android.os.SystemProperties;
 
 import com.lesports.bike.settings.R;
+import com.lesports.bike.settings.ui.BaseFragment;
+import com.lesports.bike.settings.ui.DetailActivity;
 import com.lesports.bike.settings.ui.MainActivity;
 import com.lesports.bike.settings.ui.PttFragment;
 import com.lesports.bike.settings.utils.L;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import bike.os.media.PTTManager;
 
@@ -30,8 +36,9 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
 
     private PTTManager mPttManager;
     private AudioManager mAudioManager;
-    private Notification mNotification;
+    private NotificationManager mNotifManager;
     private PttServiceListener mPttServiceListener;
+    private ArrayList<String> mChannelList;
 
     public class PttBinder extends Binder {
         public PttService getService() {
@@ -43,21 +50,10 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
     public void onCreate() {
         super.onCreate();
         L.d(TAG, "onCreate");
-        Intent intent = new Intent(this, MainActivity.class);
-        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
-
-        mNotification = new Notification.Builder(this)
-                .setContentIntent(pi)
-                .setContentTitle("标题")
-                .setContentText("内容")
-                .setTicker("状态栏上显示")   // 状态栏上显示
-                .setTicker("状态栏上显示")   // 状态栏上显示
-
-                .build();
 
         mPttManager = (PTTManager) getSystemService("ptt_service");
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-
+        mNotifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         registerReceiver(pttReceiver, new IntentFilter(PTTManager.ACTION_TUNE));
     }
 
@@ -86,6 +82,7 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
             if (PTTManager.ACTION_TUNE.equals(intent.getAction())) {
                 int channel = intent.getIntExtra(PTTManager.ACTION_TUNE_CHANNEL_ID, 1) - 1;
                 SystemProperties.set(PttFragment.PTT_CHANNEL_SELECT, channel + "");
+                startForeground(100, getNotification(getChannelList().get(channel)));
                 if (mPttServiceListener != null) {
                     mPttServiceListener.channelChanged(channel);
                 }
@@ -102,7 +99,7 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
                 if (mPttManager.open()) {
                     if (mPttManager.tune(channel + 1)) {
                         mAudioManager.requestAudioFocus(PttService.this, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
-                        startForeground(100, mNotification);
+                        startForeground(100, getNotification(getChannelList().get(channel)));
                         SystemProperties.set(PttFragment.PTT_STATUS, "1");
                         if (mPttServiceListener != null) {
                             mPttServiceListener.statusChanged(PttFragment.PTT_LOADED);
@@ -125,13 +122,28 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
         }
     }
 
-    public void switchChannel(int channel) {
+    public void switchChannelFromUI(int channel) {
         if (mPttManager.tune(channel + 1)) {
+            startForeground(100, getNotification(getChannelList().get(channel)));
             SystemProperties.set(PttFragment.PTT_CHANNEL_SELECT, channel + "");
             if (mPttServiceListener != null) {
                 mPttServiceListener.statusChanged(PttFragment.PTT_LOADED);
             }
         }
+    }
+
+    private Notification getNotification(String text) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra(BaseFragment.FRAGMENT_CLASS, PttFragment.class);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Notification notification = new Notification.Builder(this)
+                .setContentIntent(pi)
+                .setSmallIcon(R.drawable.ptt)
+                .setContentTitle("PTT当前频率")
+                .setContentText(text)
+                .setTicker("已开启PTT功能")   // 状态栏上显示
+                .build();
+        return notification;
     }
 
     @Override
@@ -151,6 +163,18 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
 
     public void setServiceListener(PttServiceListener pttServiceListener) {
         this.mPttServiceListener = pttServiceListener;
+    }
+
+    public ArrayList<String> getChannelList() {
+        if (mChannelList == null) {
+            double[] allChannels = mPttManager.getAllChannels();
+            DecimalFormat df = new DecimalFormat("#.0000");
+            mChannelList = new ArrayList<String>();
+            for (int i = 0; i < allChannels.length; i++) {
+                mChannelList.add(df.format(allChannels[i]));
+            }
+        }
+        return mChannelList;
     }
 
     public interface PttServiceListener {

@@ -2,9 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="54dp"
@@ -25,17 +23,94 @@
             android:layout_alignParentEnd="true" >
         </com.lesports.bike.settings.widget.SwitchButton>
     </RelativeLayout>
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:paddingStart="@dimen/detail_activity_padding"
         android:paddingEnd="@dimen/detail_activity_padding">
-        <ListView
-            android:id="@+id/wifi_list"
+        <TextView
+            android:id="@+id/wifi_please_open"
+            android:layout_width="wrap_content"
+            android:layout_height="60.6dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/font_smaller_than_standard"
+            android:text="@string/wifi_please_open"
+            android:visibility="gone"/>
+        <LinearLayout
+            android:id="@+id/wifi_current_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="92.7dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13.3dp"
+                android:layout_marginBottom="6.7dp"
+                android:layout_marginStart="4dp"
+                android:textSize="@dimen/font_smaller_than_standard"
+                android:textColor="@color/colorGray3"
+                android:text="@string/wifi_current_select"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.3dp"
+                android:background="@color/colorGray" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="41.3dp">
+                <TextView
+                    android:id="@+id/wifi_current_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5.3dp"/>
+                <ImageView
+                    android:id="@+id/wifi_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/loading"/>
+                <ImageView
+                    android:id="@+id/wifi_loaded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/done"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.3dp"
+                android:layout_marginBottom="6.7dp"
+                android:background="@color/colorGray" />
+        </LinearLayout>
 
-        </ListView>
-    </FrameLayout>
+        <LinearLayout
+            android:id="@+id/wifi_candidate_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="6.7dp"
+                android:layout_marginStart="4dp"
+                android:textSize="@dimen/font_smaller_than_standard"
+                android:textColor="@color/colorGray3"
+                android:text="@string/wifi_candidate"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.3dp"
+                android:background="@color/colorGray" />
+            <ListView
+                android:id="@+id/wifi_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:listSelector="@color/colorTransparent">
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

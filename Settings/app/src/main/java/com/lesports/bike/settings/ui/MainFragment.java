@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,7 +35,7 @@ public class MainFragment extends BaseFragment implements AdapterView.OnItemClic
     };
     private static final Integer[] mItemsImage = new Integer[] {
         R.drawable.sound,
-        R.drawable.wlan,
+        R.drawable.wifi_1,
         R.drawable.data,
         R.drawable.bluetooth,
         R.drawable.sensor,

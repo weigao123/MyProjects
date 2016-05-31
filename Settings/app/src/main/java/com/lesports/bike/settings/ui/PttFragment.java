@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.os.SystemProperties;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +26,7 @@ import com.lesports.bike.settings.R;
 import com.lesports.bike.settings.service.PttService;
 import com.lesports.bike.settings.widget.SwitchButton;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-
-import bike.os.media.PTTManager;
 
 /**
  * Created by gwball on 2016/5/25.
@@ -55,8 +54,8 @@ public class PttFragment extends BaseFragment implements AdapterView.OnItemClick
     // start from 0
     private int mChannelSelect = 0;
     private int mPttStatus;
-    Animation mLoadingAnim;
-
+    private Animation mLoadingAnim;
+    private ListAdapter mAdapter;
     @Override
     protected void initViewAndData() {
         mPttOpenContainer = (LinearLayout) getActivity().findViewById(R.id.ptt_open_container);
@@ -70,16 +69,9 @@ public class PttFragment extends BaseFragment implements AdapterView.OnItemClick
         mLoadingAnim.setInterpolator(new LinearInterpolator());
 
         mSwitchButton.setOnClickListener(this);
-        PTTManager pttManager = (PTTManager) getActivity().getSystemService("ptt_service");
-        double[] allChannels = pttManager.getAllChannels();
-        DecimalFormat df = new DecimalFormat("#.0000");
-        for (int i = 0; i < allChannels.length; i++) {
-            mChannelsList.add(df.format(allChannels[i]));
-        }
-
         ListView listView = (ListView) getActivity().findViewById(R.id.ptt_listview);
-        ListAdapter adapter = new ListAdapter(getActivity(), 0, mChannelsList);
-        listView.setAdapter(adapter);
+        mAdapter = new ListAdapter(getActivity(), 0, mChannelsList);
+        listView.setAdapter(mAdapter);
         listView.setOnItemClickListener(this);
 
         int pttStatus = SystemProperties.getInt(PttFragment.PTT_STATUS, 0);
@@ -89,7 +81,6 @@ public class PttFragment extends BaseFragment implements AdapterView.OnItemClick
         } else {
             mPttStatus = PTT_CLOSED;
         }
-        refreshStatus();
 
         getActivity().startService(new Intent(getActivity(), PttService.class));
         getActivity().bindService(new Intent(getActivity(), PttService.class), conn, Context.BIND_AUTO_CREATE);
@@ -110,8 +101,10 @@ public class PttFragment extends BaseFragment implements AdapterView.OnItemClick
             PttService.PttBinder pttBinder = (PttService.PttBinder) service;
             mPttService = pttBinder.getService();
             mPttService.setServiceListener(PttFragment.this);
+            mChannelsList.addAll(mPttService.getChannelList());
+            mAdapter.notifyDataSetChanged();
+            refreshStatus();
         }
-        //异常中止时回调，正常情况下是不被调用的
         public void onServiceDisconnected(ComponentName name) {
             mPttService = null;
         }
@@ -164,7 +157,7 @@ public class PttFragment extends BaseFragment implements AdapterView.OnItemClick
         mPttStatus = PTT_LOADING;
         mChannelSelect = position;
         refreshStatus();
-        mPttService.switchChannel(position);
+        mPttService.switchChannelFromUI(position);
     }
 
     @Override
@@ -180,14 +173,23 @@ public class PttFragment extends BaseFragment implements AdapterView.OnItemClick
     @Override
     public void channelChanged(int index) {
         mChannelSelect = index;
-        refreshStatus();
+        mHandler.sendEmptyMessage(1);
     }
 
     @Override
     public void statusChanged(int status) {
         mPttStatus = status;
-        refreshStatus();
+        mHandler.sendEmptyMessage(1);
     }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (isAdded()) {
+                refreshStatus();
+            }
+        }
+    };
 
     private class ListAdapter extends ArrayAdapter<String> {
         public ListAdapter(Context context, int resource, ArrayList<String> objects) {
@@ -217,5 +219,7 @@ public class PttFragment extends BaseFragment implements AdapterView.OnItemClick
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        getActivity().unbindService(conn);
+        mPttService.setServiceListener(null);
     }
 }

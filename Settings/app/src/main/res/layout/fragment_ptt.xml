@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="@string/wifi_off" />
+            android:text="@string/ptt_off" />
         <com.lesports.bike.settings.widget.SwitchButton
             android:id="@+id/ptt_switch"
             android:layout_width="wrap_content"

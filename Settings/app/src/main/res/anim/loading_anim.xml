@@ -6,6 +6,7 @@
             android:toDegrees="359"
             android:duration="500"
             android:repeatCount="-1"
+            android:interpolator="@android:anim/decelerate_interpolator"
             android:pivotX="50%"
             android:pivotY="50%" />
     </set>

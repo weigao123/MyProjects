@@ -14,19 +14,22 @@ import com.lesports.bike.settings.R;
 public abstract class BaseActivity extends Activity {
     protected abstract Fragment createFragment();
 
+    private FragmentManager mFragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_root);
-        FragmentManager fragmentManager = getFragmentManager();
-        Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContent);
+        mFragmentManager = getFragmentManager();
+        Fragment fragment = mFragmentManager.findFragmentById(R.id.fragmentContent);
         if (fragment == null) {
             fragment = createFragment();
             if (fragment != null) {
-                fragmentManager.beginTransaction().add(R.id.fragmentContent, fragment).commit();
+                mFragmentManager.beginTransaction().add(R.id.fragmentContent, fragment).commit();
             }
         }
     }
 
-
+    protected void changeFragment(Fragment fragment) {
+        mFragmentManager.beginTransaction().replace(R.id.fragmentContent, fragment).commit();
+    }
 }

@@ -32,6 +32,9 @@
     <string name="password_verify">密码验证</string>
 
     <!--wifi-->
+    <string name="wifi_please_open">打开WLAN可查看可用网络</string>
+    <string name="wifi_current_select">当前连接：</string>
+    <string name="wifi_candidate">选择网络</string>
     <string name="wifi_on">开</string>
     <string name="wifi_off">关</string>
     
