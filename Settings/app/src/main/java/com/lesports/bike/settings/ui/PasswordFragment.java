@@ -66,7 +66,7 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
         mPasswordTitle = (TextView)getActivity().findViewById(R.id.password_title);
 
         mLockPatternUtils = new LockPatternUtils(getActivity());
-        mTodo = getActivity().getIntent().getIntExtra(PasswordFragment.PASSWORD_TODO, 0);
+        mTodo = getActivity().getIntent().getIntExtra(PASSWORD_TODO, 0);
         mHandle = new Handler();
         switch (mTodo) {
             case PASSWORD_ON_LOCK:

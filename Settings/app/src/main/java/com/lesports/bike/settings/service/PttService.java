@@ -135,7 +135,8 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
     private Notification getNotification(String text) {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(BaseFragment.FRAGMENT_CLASS, PttFragment.class);
-        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
         Notification notification = new Notification.Builder(this)
                 .setContentIntent(pi)
                 .setSmallIcon(R.drawable.ptt)

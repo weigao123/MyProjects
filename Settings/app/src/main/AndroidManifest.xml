@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lesports.bike.settings" >
-    <!--android:sharedUserId="android.uid.system" -->
+    package="com.lesports.bike.settings"
+    android:sharedUserId="android.uid.system" >
     
     <uses-permission android:name="android.permission.ACCESS_KEYGUARD_SECURE_STORAGE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -25,8 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.DetailActivity"
-            android:launchMode="singleTop">
+            android:name=".ui.DetailActivity" >
         </activity>
         <receiver android:name=".broadcast.PttReceiver">
             <intent-filter>

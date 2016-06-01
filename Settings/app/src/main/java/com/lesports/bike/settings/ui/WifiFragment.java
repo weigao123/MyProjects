@@ -1,9 +1,11 @@
 package com.lesports.bike.settings.ui;
 
+import android.app.DialogFragment;
 import android.content.Context;
-import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,25 +17,28 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lesports.bike.settings.R;
+import com.lesports.bike.settings.control.WifiControl;
+import com.lesports.bike.settings.widget.InputBox;
 import com.lesports.bike.settings.widget.SwitchButton;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
+import com.lesports.bike.settings.control.WifiControl.*;
 
 /**
  * Created by gwball on 2016/5/25.
  */
-public class WifiFragment extends BaseFragment implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class WifiFragment extends BaseFragment implements AdapterView.OnItemClickListener, View.OnClickListener, WifiControlCallback {
 
     private static final int WIFI_CLOSED = 1;
     private static final int WIFI_OPENED = 2;
     private static final int WIFI_CONNECTTING = 3;
     private static final int WIFI_CONNECTTED = 4;
 
-    private WifiManager mWifiManager;
+    private static final int WIFI_REFRESH_DATA = 1;
+    private static final int WIFI_REFRESH_VIEW = 2;
+
+    private WifiControl mWifiControl;
     private List<WifiBean> mWifiList = new ArrayList<WifiBean>();
 
     private int mWifiStatus;
@@ -77,28 +82,101 @@ public class WifiFragment extends BaseFragment implements AdapterView.OnItemClic
         listView.setAdapter(mAdapter);
         listView.setOnItemClickListener(this);
 
-        mWifiManager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
-        if (mWifiManager.isWifiEnabled()) {
-            refreshWifiList();
-            mWifiStatus = WIFI_OPENED;
-        } else {
-            mWifiStatus = WIFI_CLOSED;
-        }
+        mWifiControl = WifiControl.getInstance(getActivity());
+        mWifiControl.setCallback(this);
+        mWifiControl.initWifi();
         refreshView();
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        InputBox inputBox = new InputBox();
+        //inputBox.setStyle(DialogFragment.STYLE_NO_TITLE | DialogFragment.STYLE_NO_FRAME, 0);
+        inputBox.show(getFragmentManager(), null);
+
     }
 
     @Override
     public void onClick(View v) {
-        boolean status = mSwitchButton.isSwitchOn();
-        boolean result = mWifiManager.setWifiEnabled(!status);
-        if (result) {
-            mWifiStatus = status? WIFI_CLOSED : WIFI_OPENED;
+        mSwitchButton.setClickable(false);
+        boolean goStatus = !mSwitchButton.isSwitchOn();
+        if (goStatus) {
+            mWifiControl.openWifi();
+        } else {
+            mWifiControl.closeWifi();
+        }
+    }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case WIFI_REFRESH_DATA:
+                    List<WifiBean> newWifiList = (List<WifiBean>)msg.obj;
+                    mWifiList.clear();
+                    mWifiList.addAll(newWifiList);
+                    break;
+                case WIFI_REFRESH_VIEW:
+                    break;
+            }
             refreshView();
         }
+    };
+
+    private void refreshView() {
+        if (!isAdded()) {
+            return;
+        }
+        int wifiStatus = mWifiControl.getWifiStatus();
+        switch (wifiStatus) {
+            case WifiManager.WIFI_STATE_DISABLING:
+                mSwitchButton.setSwitchStatus(false);
+                mWifiStatusView.setText(getResources().getString(R.string.wifi_on));
+                mWifiPleaseOpen.setVisibility(View.GONE);
+                mWifiCurrentContainer.setVisibility(View.GONE);
+                mWifiCandidateContainer.setVisibility(View.VISIBLE);
+                break;
+            case WifiManager.WIFI_STATE_DISABLED:
+                mSwitchButton.setSwitchStatus(false);
+                mWifiStatusView.setText(getResources().getString(R.string.wifi_off));
+                mWifiPleaseOpen.setVisibility(View.VISIBLE);
+                mWifiCurrentContainer.setVisibility(View.GONE);
+                mWifiCandidateContainer.setVisibility(View.GONE);
+                mSwitchButton.setClickable(true);
+                break;
+            case WifiManager.WIFI_STATE_ENABLING:
+                mSwitchButton.setSwitchStatus(true);
+                mWifiStatusView.setText(getResources().getString(R.string.wifi_on));
+                mWifiPleaseOpen.setVisibility(View.GONE);
+                mWifiCurrentContainer.setVisibility(View.GONE);
+                mWifiCandidateContainer.setVisibility(View.VISIBLE);
+                mAdapter.notifyDataSetChanged();
+                break;
+            case WifiManager.WIFI_STATE_ENABLED:
+                mSwitchButton.setSwitchStatus(true);
+                mWifiStatusView.setText(getResources().getString(R.string.wifi_on));
+                mWifiPleaseOpen.setVisibility(View.GONE);
+                mWifiCurrentContainer.setVisibility(View.GONE);
+                mWifiCandidateContainer.setVisibility(View.VISIBLE);
+                mSwitchButton.setClickable(true);
+                mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mWifiControl.detachWifi();
+    }
+
+    @Override
+    public void onRefreshDataSuccess(List<WifiBean> newWifiList) {
+        mHandler.obtainMessage(WIFI_REFRESH_DATA, newWifiList).sendToTarget();
+    }
+
+    @Override
+    public void onStatusChanged(int status) {
+        mHandler.sendEmptyMessage(WIFI_REFRESH_VIEW);
     }
 
     private class ListAdapter extends ArrayAdapter<WifiBean> {
@@ -132,72 +210,5 @@ public class WifiFragment extends BaseFragment implements AdapterView.OnItemClic
         public TextView wifiNameView;
         public ImageView wifiLockView;
         public ImageView wifiStrength;
-    }
-
-    private void refreshView() {
-        if (mWifiStatus == WIFI_CLOSED) {
-            mSwitchButton.setSwitchStatus(false);
-            mWifiStatusView.setText(getResources().getString(R.string.wifi_off));
-            mWifiPleaseOpen.setVisibility(View.VISIBLE);
-            mWifiCurrentContainer.setVisibility(View.GONE);
-            mWifiCandidateContainer.setVisibility(View.GONE);
-        } else {
-            if (mWifiStatus == WIFI_OPENED) {
-                mWifiCurrentContainer.setVisibility(View.GONE);
-            } else {
-                if (mWifiStatus == WIFI_CONNECTTING) {
-                    mWifiLoading.setVisibility(View.VISIBLE);
-                    mWifiLoaded.setVisibility(View.GONE);
-                }
-                if (mWifiStatus == WIFI_CONNECTTED) {
-                    mWifiLoading.setVisibility(View.GONE);
-                    mWifiLoaded.setVisibility(View.VISIBLE);
-                }
-                mWifiSelectedView.setText(mWifiSelectedName);
-                mWifiCurrentContainer.setVisibility(View.VISIBLE);
-            }
-
-            mSwitchButton.setSwitchStatus(true);
-            mWifiStatusView.setText(getResources().getString(R.string.wifi_on));
-            mWifiPleaseOpen.setVisibility(View.GONE);
-            mWifiCandidateContainer.setVisibility(View.VISIBLE);
-            mAdapter.notifyDataSetChanged();
-        }
-    }
-
-    private void refreshWifiList() {
-        mWifiManager.startScan();
-        List<ScanResult> scanResults = mWifiManager.getScanResults();
-        mWifiList.clear();
-
-        HashMap<String, WifiBean> wifiMap = new HashMap<String, WifiBean>();
-        for (ScanResult result : scanResults) {
-            WifiBean wifiBean = new WifiBean();
-            wifiBean.name = result.SSID;
-            wifiBean.isLock = result.capabilities.contains("WPA");
-            wifiBean.level = Math.abs(result.level);
-            if (!wifiMap.containsKey(wifiBean.name)) {
-                mWifiList.add(wifiBean);
-                wifiMap.put(wifiBean.name, wifiBean);
-            }
-        }
-        Collections.sort(mWifiList, new Comparator<WifiBean>() {
-            @Override
-            public int compare(final WifiBean con1, final WifiBean con2) {
-                if (con1.level == con2.level) {
-                    return 0;
-                } else if (con2.level > con1.level) {
-                    return 1;
-                } else {
-                    return -1;
-                }
-            }
-        });
-    }
-
-    private class WifiBean {
-        String name;
-        boolean isLock;
-        int level;
     }
 }

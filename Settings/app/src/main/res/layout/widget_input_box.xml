@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+    <RelativeLayout
+        android:layout_width="270dp"
+        android:layout_height="184dp"
+        android:background="@drawable/input_box_border">
+
+        <TextView
+            android:id="@+id/wifi_ssid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18.7dp"
+            android:layout_marginStart="16.7dp"
+            android:text="@string/input_box_title"/>
+        <EditText
+            android:id="@+id/wifi_password"
+            android:layout_marginTop="64.7dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="17dp"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:singleLine="true"
+            android:textCursorDrawable="@drawable/cursor"
+            android:background="@color/colorTransparent"/>
+        <View
+            android:layout_width="240dp"
+            android:layout_height="1.3dp"
+            android:layout_marginTop="85.3dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorGray"/>
+
+        <ImageView
+            android:id="@+id/wifi_show_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="168.7dp"
+            android:layout_marginTop="98dp"
+            android:src="@drawable/input_box_checkbox_off"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="188.7dp"
+            android:layout_marginTop="94dp"
+            android:textSize="@dimen/font_smaller_than_standard"
+            android:text="@string/wifi_show_password"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="132dp"
+            android:src="@drawable/input_box_line"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/input_box_v_line"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="134dp"/>
+
+        <TextView
+            android:id="@+id/input_box_lbtn"
+            android:layout_width="134dp"
+            android:layout_height="51dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="@string/cancel"/>
+        <TextView
+            android:id="@+id/input_box_rbtn"
+            android:layout_width="134dp"
+            android:layout_height="51dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:text="@string/wifi_connect"/>
+    </RelativeLayout>
+</LinearLayout>

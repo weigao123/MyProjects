@@ -17,6 +17,7 @@
     <string name="language">Language</string>
     <string name="about_bike">About bike</string>
     <string name="unbind_bike">Unbind bike</string>
+    <string name="input_box_title">Lesports</string>
 
     <!--security-->
     <string name="lockscreen_password">锁屏密码</string>
@@ -37,6 +38,8 @@
     <string name="wifi_candidate">选择网络</string>
     <string name="wifi_on">开</string>
     <string name="wifi_off">关</string>
+    <string name="wifi_connect">连接</string>
+    <string name="wifi_show_password">显示密码</string>
 
     <!--ppt-->
     <string name="ptt_please_open">打开PTT对讲功能可选择对讲频道</string>
