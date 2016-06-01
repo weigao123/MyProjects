@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lesports.bike.settings"
-    android:sharedUserId="android.uid.system" >
+    package="com.lesports.bike.settings" >
+    <!--android:sharedUserId="android.uid.system" -->
     
     <uses-permission android:name="android.permission.ACCESS_KEYGUARD_SECURE_STORAGE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />

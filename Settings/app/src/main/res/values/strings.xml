@@ -37,7 +37,9 @@
     <string name="wifi_current_select">当前连接：</string>
     <string name="wifi_candidate">选择网络</string>
     <string name="wifi_on">开</string>
+    <string name="wifi_oning">正在打开...</string>
     <string name="wifi_off">关</string>
+    <string name="wifi_offing">正在关闭...</string>
     <string name="wifi_connect">连接</string>
     <string name="wifi_show_password">显示密码</string>
 

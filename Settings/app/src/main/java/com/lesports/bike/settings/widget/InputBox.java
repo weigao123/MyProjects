@@ -2,9 +2,11 @@ package com.lesports.bike.settings.widget;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +24,8 @@ public class InputBox extends DialogFragment implements View.OnClickListener {
     private ImageView mIsShowPassword;
     private TextView mLeftButton;
     private TextView mRightButton;
+
+    private String mWifiSSID;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +58,11 @@ public class InputBox extends DialogFragment implements View.OnClickListener {
         mRightButton = (TextView) mRoot.findViewById(R.id.input_box_rbtn);
 
         mLeftButton.setOnClickListener(this);
+        mRightButton.setOnClickListener(this);
+        mIsShowPassword.setOnClickListener(this);
+        mWifiSSID = getArguments().getString("wifi_name");
+        mWifiName.setText(mWifiSSID);
+
     }
 
     @Override
@@ -61,6 +70,19 @@ public class InputBox extends DialogFragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.input_box_lbtn:
                 dismiss();
+                break;
+            case R.id.wifi_show_password:
+                if (mWifiPassword.getInputType() == InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+                    mWifiPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    mIsShowPassword.setImageResource(R.drawable.input_box_checkbox_off);
+                } else {
+                    mWifiPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    mIsShowPassword.setImageResource(R.drawable.input_box_checkbox_on);
+                }
+                mWifiPassword.setSelection(mWifiPassword.getText().length());
+                break;
+            case R.id.input_box_rbtn:
+                break;
         }
     }
 }

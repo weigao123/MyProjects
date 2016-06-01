@@ -21,9 +21,12 @@
             android:layout_marginStart="17dp"
             android:layout_marginEnd="17dp"
             android:layout_width="match_parent"
-            android:layout_height="16dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:singleLine="true"
+            android:textSize="@dimen/font_smaller_than_standard"
             android:textCursorDrawable="@drawable/cursor"
+            android:inputType="textPassword"
             android:background="@color/colorTransparent"/>
         <View
             android:layout_width="240dp"

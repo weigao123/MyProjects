@@ -1,6 +1,5 @@
 package com.lesports.bike.settings.ui;
 
-import android.app.DialogFragment;
 import android.content.Context;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -90,10 +89,19 @@ public class WifiFragment extends BaseFragment implements AdapterView.OnItemClic
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        InputBox inputBox = new InputBox();
-        //inputBox.setStyle(DialogFragment.STYLE_NO_TITLE | DialogFragment.STYLE_NO_FRAME, 0);
-        inputBox.show(getFragmentManager(), null);
-
+        if (mWifiControl.getWifiStatus() != WifiManager.WIFI_STATE_ENABLED) {
+            return;
+        }
+        WifiBean wifiBean = mWifiList.get(position);
+        if (wifiBean.isLock) {
+            InputBox inputBox = new InputBox();
+            Bundle bundle = new Bundle();
+            bundle.putString("wifi_name", wifiBean.name);
+            inputBox.setArguments(bundle);
+            inputBox.show(getFragmentManager(), null);
+        } else {
+            mWifiControl.connectWifi(wifiBean.name, "", 0);
+        }
     }
 
     @Override
@@ -131,7 +139,7 @@ public class WifiFragment extends BaseFragment implements AdapterView.OnItemClic
         switch (wifiStatus) {
             case WifiManager.WIFI_STATE_DISABLING:
                 mSwitchButton.setSwitchStatus(false);
-                mWifiStatusView.setText(getResources().getString(R.string.wifi_on));
+                mWifiStatusView.setText(getResources().getString(R.string.wifi_offing));
                 mWifiPleaseOpen.setVisibility(View.GONE);
                 mWifiCurrentContainer.setVisibility(View.GONE);
                 mWifiCandidateContainer.setVisibility(View.VISIBLE);
@@ -146,7 +154,7 @@ public class WifiFragment extends BaseFragment implements AdapterView.OnItemClic
                 break;
             case WifiManager.WIFI_STATE_ENABLING:
                 mSwitchButton.setSwitchStatus(true);
-                mWifiStatusView.setText(getResources().getString(R.string.wifi_on));
+                mWifiStatusView.setText(getResources().getString(R.string.wifi_oning));
                 mWifiPleaseOpen.setVisibility(View.GONE);
                 mWifiCurrentContainer.setVisibility(View.GONE);
                 mWifiCandidateContainer.setVisibility(View.VISIBLE);
@@ -192,7 +200,7 @@ public class WifiFragment extends BaseFragment implements AdapterView.OnItemClic
                 viewHolder = new ViewHolder();
                 viewHolder.wifiNameView = (TextView) convertView.findViewById(R.id.wifi_item_name);
                 viewHolder.wifiLockView = (ImageView) convertView.findViewById(R.id.wifi_has_lock);
-                viewHolder.wifiStrength = (ImageView) convertView.findViewById(R.id.wifi_strength);
+                viewHolder.wifiLevelView = (ImageView) convertView.findViewById(R.id.wifi_strength);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
@@ -200,8 +208,8 @@ public class WifiFragment extends BaseFragment implements AdapterView.OnItemClic
             WifiBean result = mWifiList.get(position);
             viewHolder.wifiNameView.setText(result.name);
             viewHolder.wifiLockView.setVisibility(result.isLock ? View.VISIBLE : View.INVISIBLE);
-            viewHolder.wifiStrength.setImageResource(R.drawable.wifi_level);
-            viewHolder.wifiStrength.setImageLevel(result.level);
+            viewHolder.wifiLevelView.setImageResource(R.drawable.wifi_level);
+            viewHolder.wifiLevelView.setImageLevel(result.level);
             return convertView;
         }
     }
@@ -209,6 +217,6 @@ public class WifiFragment extends BaseFragment implements AdapterView.OnItemClic
     private static class ViewHolder {
         public TextView wifiNameView;
         public ImageView wifiLockView;
-        public ImageView wifiStrength;
+        public ImageView wifiLevelView;
     }
 }

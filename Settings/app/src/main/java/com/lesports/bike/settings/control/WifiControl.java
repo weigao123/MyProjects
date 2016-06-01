@@ -62,6 +62,10 @@ public class WifiControl {
         timer.cancel();
     }
 
+    public void connectWifi(String ssid, String password, int type) {
+        //mWifiManager.connect(ssid, password, type);
+    }
+
     public int getWifiStatus() {
         return mWifiManager.getWifiState();
     }
