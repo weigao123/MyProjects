@@ -1,12 +1,14 @@
 package com.lesports.bike.settings.widget;
 
 import android.app.DialogFragment;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ public class InputBox extends DialogFragment implements View.OnClickListener {
     private TextView mRightButton;
 
     private String mWifiSSID;
+    private InputCallback mInputCallback;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,15 +42,10 @@ public class InputBox extends DialogFragment implements View.OnClickListener {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initViewAndData();
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         getDialog().setCanceledOnTouchOutside(true);
+        initViewAndData();
     }
 
     public void initViewAndData() {
@@ -62,7 +60,10 @@ public class InputBox extends DialogFragment implements View.OnClickListener {
         mIsShowPassword.setOnClickListener(this);
         mWifiSSID = getArguments().getString("wifi_name");
         mWifiName.setText(mWifiSSID);
-
+        Shader shader_gradient = new LinearGradient(0, 20, 0, 40, Color.parseColor("#00f79d"),
+                Color.parseColor("#0cb8e2"), Shader.TileMode.CLAMP);
+        mLeftButton.getPaint().setShader(shader_gradient);
+        mRightButton.getPaint().setShader(shader_gradient);
     }
 
     @Override
@@ -82,7 +83,19 @@ public class InputBox extends DialogFragment implements View.OnClickListener {
                 mWifiPassword.setSelection(mWifiPassword.getText().length());
                 break;
             case R.id.input_box_rbtn:
+                if (mWifiPassword.getText().length() >= 1) {
+                    mInputCallback.confirmCallback(mWifiPassword.getText().toString());
+                    dismiss();
+                }
                 break;
         }
+    }
+
+    public void setInputCallback(InputCallback inputCallback) {
+        this.mInputCallback = inputCallback;
+    }
+
+    public interface InputCallback {
+        void confirmCallback(String input);
     }
 }

@@ -2,8 +2,11 @@ package com.lesports.bike.settings.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
+import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Shader;
 import android.os.Handler;
@@ -48,5 +51,51 @@ public class PopupUtils {
                 }
             }
         }, TIME_TO_FINISH_ACTIVITY);
+    }
+
+    public static PopupControl popupOverlayView2(final Context context, final View view) {
+        final WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager.LayoutParams params = new WindowManager.LayoutParams();
+        params.type = WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY;
+        params.flags = WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        params.format = PixelFormat.TRANSLUCENT;
+        params.width = WindowManager.LayoutParams.MATCH_PARENT;
+        params.height = WindowManager.LayoutParams.MATCH_PARENT;
+        windowManager.addView(view, params);
+        return new PopupControl() {
+            @Override
+            public void closeView() {
+                windowManager.removeView(view);
+            }
+        };
+    }
+
+
+    public interface PopupControl {
+        void closeView();
+    }
+
+    public void test(View view) {
+        view.setDrawingCacheEnabled(true);
+        Bitmap bmp = view.getDrawingCache();
+
+        float scaleFactor = 1;
+        float radius = 20;
+
+            scaleFactor = 8;
+            radius = 2;
+
+//        Bitmap overlay = Bitmap.createBitmap((int) (view.getMeasuredWidth()/scaleFactor),
+//                (int) (view.getMeasuredHeight()/scaleFactor), Bitmap.Config.ARGB_8888);
+//        Canvas canvas = new Canvas(overlay);
+//        canvas.translate(-view.getLeft()/scaleFactor, -view.getTop()/scaleFactor);
+//        canvas.scale(1 / scaleFactor, 1 / scaleFactor);
+//        Paint paint = new Paint();
+//        paint.setFlags(Paint.FILTER_BITMAP_FLAG);
+//        canvas.drawBitmap(bkg, 0, 0, paint);
+//
+//        overlay = FastBlur.doBlur(overlay, (int)radius, true);
+
+
     }
 }

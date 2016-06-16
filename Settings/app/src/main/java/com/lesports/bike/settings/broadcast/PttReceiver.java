@@ -24,6 +24,10 @@ public class PttReceiver extends BroadcastReceiver {
             L.d(TAG, "Boot complete");
             newIntent.putExtra("isBoot", true);
             context.startService(newIntent);
+        } else if ("com.lesports.bike.SWITCH_PTT".equals(intent.getAction())) {
+            L.d(TAG, "SWITCH_PTT");
+            newIntent.putExtra("state", intent.getBooleanExtra("state", false));
+            context.startService(newIntent);
         }
     }
 }

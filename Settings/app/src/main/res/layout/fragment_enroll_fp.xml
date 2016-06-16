@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <com.lesports.bike.settings.widget.FingerProgressBar
+        android:id="@+id/fp_enroll_progress"
+        android:layout_width="213dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="51.3dp"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/fp_enroll_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="267.3dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/font_smaller_than_standard"
+        android:text="@string/fp_enroll_tip" />
+    <RelativeLayout
+        android:id="@+id/fp_enroll_confirm"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/frame_bg"
+        android:gravity="center_horizontal"
+        android:visibility="invisible">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="24sp"
+            android:textColor="@color/green"
+            android:text="@string/confirm"/>
+    </RelativeLayout>
+
+</RelativeLayout>

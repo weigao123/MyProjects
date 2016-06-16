@@ -64,13 +64,20 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent.getBooleanExtra("isBoot", false)) {
+        if (intent.hasExtra("isBoot")) {
             if (SystemProperties.getInt(PttFragment.PTT_STATUS, 0) == 1) {
                 final int channel = SystemProperties.getInt(PttFragment.PTT_CHANNEL_SELECT, 0);
                 L.d(TAG, "Boot: PTT start to open channel:" + channel);
                 openPtt(channel);
             } else {
                 L.d(TAG, "Boot: PTT status is 0");
+            }
+        } else if (intent.hasExtra("state")) {
+            if (intent.getBooleanExtra("state", false)) {
+                final int channel = SystemProperties.getInt(PttFragment.PTT_CHANNEL_SELECT, 0);
+                openPtt(channel);
+            } else {
+                closePtt();
             }
         }
         return super.onStartCommand(intent, flags, startId);
@@ -101,6 +108,7 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
                         mAudioManager.requestAudioFocus(PttService.this, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
                         startForeground(100, getNotification(getChannelList().get(channel)));
                         SystemProperties.set(PttFragment.PTT_STATUS, "1");
+                        sendBroadcast(true);
                         if (mPttServiceListener != null) {
                             mPttServiceListener.statusChanged(PttFragment.PTT_LOADED);
                         }
@@ -116,10 +124,17 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
             mAudioManager.abandonAudioFocus(PttService.this);
             stopForeground(true);
             SystemProperties.set(PttFragment.PTT_STATUS, "0");
+            sendBroadcast(false);
             if (mPttServiceListener != null) {
                 mPttServiceListener.statusChanged(PttFragment.PTT_CLOSED);
             }
         }
+    }
+
+    private void sendBroadcast(boolean state) {
+        Intent intent = new Intent("com.lesports.bike.PTT_CHANGED");
+        intent.putExtra("state", state);
+        sendBroadcast(intent);
     }
 
     public void switchChannelFromUI(int channel) {

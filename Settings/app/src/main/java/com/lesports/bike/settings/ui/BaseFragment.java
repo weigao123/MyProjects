@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -24,6 +25,7 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void initViewAndData();
     protected abstract View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
     protected abstract String getTitleName();
+    protected FrameLayout mFrameLayout2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,7 @@ public abstract class BaseFragment extends Fragment {
             }
             titleView.setText(getTitleName());
         }
-
+        mFrameLayout2 = (FrameLayout) getActivity().findViewById(R.id.fragmentContent2);
         initViewAndData();
     }
 

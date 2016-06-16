@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lesports.bike.settings.R;
 import com.lesports.bike.settings.service.PttService;
@@ -163,6 +164,10 @@ public class PttFragment extends BaseFragment implements AdapterView.OnItemClick
     @Override
     public void onClick(View v) {
         mSwitchButton.setClickable(false);
+        if (mPttService == null) {
+            Toast.makeText(getActivity(), "Please wait while PttService is being initialized", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (!mSwitchButton.isSwitchOn()) {
             openPtt();
         } else {
@@ -220,6 +225,8 @@ public class PttFragment extends BaseFragment implements AdapterView.OnItemClick
     public void onDestroyView() {
         super.onDestroyView();
         getActivity().unbindService(conn);
-        mPttService.setServiceListener(null);
+        if (mPttService != null) {
+            mPttService.setServiceListener(null);
+        }
     }
 }

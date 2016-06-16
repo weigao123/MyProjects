@@ -5,9 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.ScanResult;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
 import android.os.CountDownTimer;
+import android.os.Parcelable;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,6 +30,11 @@ public class WifiControl {
     private WifiManager mWifiManager;
     private WifiControlCallback callback;
     private Context context;
+    private int TIME_REFRESH = 5000;
+
+    public static final int WIFICIPHER_NOPASS = 1;
+    public static final int WIFICIPHER_WEP = 2;
+    public static final int WIFICIPHER_WPA = 3;
 
     private WifiControl(Context context) {
         this.context = context;
@@ -47,9 +58,10 @@ public class WifiControl {
         timer.cancel();
     }
 
-    public void initWifi() {
+    public void attachWifiControl() {
         IntentFilter filters= new IntentFilter();
         filters.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
+        filters.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         filters.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         context.registerReceiver(mReceiver, filters);
         if (mWifiManager.isWifiEnabled()) {
@@ -57,23 +69,20 @@ public class WifiControl {
         }
     }
 
-    public void detachWifi() {
+    public void detachWifiControl() {
         context.unregisterReceiver(mReceiver);
         timer.cancel();
     }
 
-    public void connectWifi(String ssid, String password, int type) {
-        //mWifiManager.connect(ssid, password, type);
-    }
-
-    public int getWifiStatus() {
+    public int getWifiState() {
         return mWifiManager.getWifiState();
     }
 
     public void getWifiListLoop() {
         timer.start();
     }
-    private CountDownTimer timer = new CountDownTimer(Long.MAX_VALUE, 5000) {
+
+    private CountDownTimer timer = new CountDownTimer(Long.MAX_VALUE, TIME_REFRESH) {
         @Override
         public void onTick(long millisUntilFinished) {
             new Thread(new Runnable() {
@@ -97,7 +106,13 @@ public class WifiControl {
         for (ScanResult result : scanResults) {
             WifiBean wifiBean = new WifiBean();
             wifiBean.name = result.SSID;
-            wifiBean.isLock = result.capabilities.contains("WPA");
+            if (result.capabilities.contains("WEP") || result.capabilities.contains("wep")) {
+                wifiBean.passwordType = WIFICIPHER_WEP;
+            } else if (result.capabilities.contains("WPA") || result.capabilities.contains("wpa")) {
+                wifiBean.passwordType = WIFICIPHER_WPA;
+            } else {
+                wifiBean.passwordType = WIFICIPHER_NOPASS;
+            }
             wifiBean.level = Math.abs(result.level);
             if (!wifiMap.containsKey(wifiBean.name)) {
                 wifiBeanList.add(wifiBean);
@@ -121,15 +136,6 @@ public class WifiControl {
         }
     }
 
-    public void setCallback(WifiControlCallback callback) {
-        this.callback = callback;
-    }
-
-    public interface WifiControlCallback {
-        void onRefreshDataSuccess(List<WifiBean> newWifiList);
-        void onStatusChanged(int status);
-    }
-
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -140,14 +146,135 @@ public class WifiControl {
                 } else if (wifiState == WifiManager.WIFI_STATE_DISABLED){
                     timer.cancel();
                 }
-                callback.onStatusChanged(wifiState);
+                callback.onWifiStateChanged(wifiState);
+            } else if (WifiManager.NETWORK_STATE_CHANGED_ACTION.equals(intent.getAction())) {
+                Parcelable parcelableExtra = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
+                if (null != parcelableExtra) {
+                    NetworkInfo networkInfo = (NetworkInfo) parcelableExtra;
+                    callback.onConnectStateChanged(networkInfo);
+                }
+            } else if (ConnectivityManager.CONNECTIVITY_ACTION.equals(intent.getAction())) {
+                NetworkInfo tmpInfo = (NetworkInfo) intent.getExtras().get(ConnectivityManager.EXTRA_NETWORK_INFO);
+                int a = 5;
+                a++;
             }
         }
     };
 
+    /*----------------------------------------------------------------------------------------------*/
+
+    public void connectWifi(String ssid, String password, int type) {
+        if (getWifiState() == WifiManager.WIFI_STATE_ENABLED) {
+            new ConnectWifiThread().execute(ssid, password, type + "");
+        } else {
+            Toast.makeText(context, "wifi is not ready.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * 配置wifi
+     */
+    private WifiConfiguration createWifiInfo(String SSID, String Password, int Type, WifiManager wifiManager) {
+        WifiConfiguration config = new WifiConfiguration();
+        config.allowedAuthAlgorithms.clear();
+        config.allowedGroupCiphers.clear();
+        config.allowedKeyManagement.clear();
+        config.allowedPairwiseCiphers.clear();
+        config.allowedProtocols.clear();
+        config.SSID = "\"" + SSID + "\"";
+
+        WifiConfiguration tempConfig = isExist(SSID);
+        if (tempConfig != null) {
+            wifiManager.removeNetwork(tempConfig.networkId);
+        }
+
+        if (Type == WIFICIPHER_NOPASS)
+        {
+            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+        }
+        if (Type == WIFICIPHER_WEP)
+        {
+            config.hiddenSSID = true;
+            config.wepKeys[0] = "\"" + Password + "\"";
+            config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.SHARED);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
+            config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP104);
+            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+            config.wepTxKeyIndex = 0;
+        }
+        if (Type == WIFICIPHER_WPA)
+        {
+            config.preSharedKey = "\"" + Password + "\"";
+            config.hiddenSSID = true;
+            config.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+            config.status = WifiConfiguration.Status.ENABLED;
+        }
+        return config;
+    }
+
+    /**
+     * 查看wifi自带的配置列表中是否配置过这个网络,有的话返回配置信息
+     */
+    private WifiConfiguration isExist(String SSID) {
+        List<WifiConfiguration> existingConfigs = mWifiManager.getConfiguredNetworks();
+        for (WifiConfiguration existingConfig : existingConfigs) {
+            if (existingConfig.SSID.equals("\"" + SSID + "\"")) {
+                return existingConfig;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 连接wifi
+     */
+    class ConnectWifiThread extends AsyncTask<String, Integer, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            String SSID = params[0];
+            int Type = Integer.parseInt(params[2]);
+            // 连接配置好指定ID的网络
+            WifiConfiguration config = createWifiInfo(SSID, params[1], Type, mWifiManager);
+            WifiInfo mInfo = mWifiManager.getConnectionInfo();
+            if (mInfo != null) {
+                mWifiManager.disableNetwork(mInfo.getNetworkId());
+            }
+            boolean b = false;
+            if (config.networkId > 0) {
+                b = mWifiManager.enableNetwork(config.networkId, true);
+                mWifiManager.updateNetwork(config);
+            } else {
+                int netId = mWifiManager.addNetwork(config);
+                if (netId > 0) {
+                    mWifiManager.saveConfiguration();
+                    b = mWifiManager.enableNetwork(netId, true);
+                } else {
+                }
+
+            }
+            return b ? SSID + "" : null;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+        }
+    }
+
     public class WifiBean {
         public String name;
-        public boolean isLock;
+        public int passwordType;
         public int level;
+    }
+
+    public void setCallback(WifiControlCallback callback) {
+        this.callback = callback;
+    }
+
+    public interface WifiControlCallback {
+        void onRefreshDataSuccess(List<WifiBean> newWifiList);
+        void onWifiStateChanged(int status);
+        void onConnectStateChanged(NetworkInfo info);
     }
 }

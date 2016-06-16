@@ -59,7 +59,7 @@ public class SecurityFragment extends BaseFragment implements View.OnClickListen
                 break;
             case R.id.fingerprint_manager:
                 if (mSwitchButton.isSwitchOn()) {
-
+                    ActivityUtils.startFragmentActivity(getActivity(), FingerprintFragment.class);
                 }
                 break;
         }

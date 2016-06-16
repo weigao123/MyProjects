@@ -8,7 +8,13 @@
     <color name="colorGray">#4a4a4a</color>
     <color name="colorGray2">#1c1c1c</color>
     <color name="colorGray3">#9b9b9b</color>
+    <color name="colorGray4">#999999</color>
+    <color name="colorGray5">#242424</color>
+    <color name="colorGray6">#777777</color>
+    <color name="colorGreen">#00f79d</color>
     <color name="colorTransparent">#00000000</color>
     <color name="colorTransparentBackground">#b2000000</color>
+    <color name="colorDark">#2a2a2a</color>
     <color name="green">#00f79d</color>
+    <color name="blue">#cc0cb7e2</color>
 </resources>

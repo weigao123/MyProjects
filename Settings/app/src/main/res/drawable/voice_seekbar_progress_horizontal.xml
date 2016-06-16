@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--     Copyright (C) 2011, RingCentral, Inc. All Rights Reserved. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@android:id/background"
+        android:height="5dp">
+        <shape >
+            <corners
+                android:radius="66.7dp"></corners>
+            <solid
+                android:color="#2b2b2b"></solid>
+
+        </shape>
+    </item>
+
+    <item android:id="@android:id/progress"
+        android:height="10.7dp">
+        <clip>
+            <shape >
+                <corners
+                    android:radius="66.7dp"></corners>
+                <solid
+                    android:color="#00f79d"></solid>
+
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

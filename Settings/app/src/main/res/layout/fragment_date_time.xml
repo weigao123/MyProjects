@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:fadingEdgeLength="0dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="61.3dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="17.3dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/auto_set_date_time"
+                    android:textSize="20sp" />
+
+                <com.lesports.bike.settings.widget.SwitchButton
+                    android:id="@+id/auto_set_date_time_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="256dp" >
+                </com.lesports.bike.settings.widget.SwitchButton>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18.7dp"
+                android:text="@string/auto_set_date_time_detail"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:layout_marginLeft="17.3dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorDark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="61.3dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17.3dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/auto_set_timezone"
+                    android:textSize="20sp" />
+
+                <com.lesports.bike.settings.widget.SwitchButton
+                    android:id="@+id/auto_set_timezone_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="256dp" >
+                </com.lesports.bike.settings.widget.SwitchButton>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18.7dp"
+                android:text="@string/auto_set_timezone_detail"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:layout_marginLeft="17.3dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorDark" />
+
+            <LinearLayout
+                android:id="@+id/manual_set_date_section"
+                android:layout_width="match_parent"
+                android:layout_height="103.3dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/setDateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17.3dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/manual_set_date"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/dateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17.3dp"
+                    android:layout_marginTop="13.3dp"
+                    android:text="@string/no_date_dispaly"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:layout_marginLeft="17.3dp"
+                android:background="@color/colorDark" />
+
+            <LinearLayout
+                android:id="@+id/manual_set_time_section"
+                android:layout_width="match_parent"
+                android:layout_height="103.3dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/setTimeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17.3dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/manual_set_time"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/timeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17.3dp"
+                    android:layout_marginTop="13.3dp"
+                    android:text="@string/no_time_display"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:layout_marginLeft="17.3dp"
+                android:background="@color/colorDark" />
+
+            <LinearLayout
+                android:id="@+id/manual_set_timezone_section"
+                android:layout_width="match_parent"
+                android:layout_height="103.3dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/setTimezoneText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17.3dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/manual_set_timezone"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/timezoneText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17.3dp"
+                    android:layout_marginTop="13.3dp"
+                    android:text="@string/no_timezone_display"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

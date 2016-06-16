@@ -7,7 +7,6 @@
         android:layout_width="270dp"
         android:layout_height="184dp"
         android:background="@drawable/input_box_border">
-
         <TextView
             android:id="@+id/wifi_ssid"
             android:layout_width="wrap_content"
@@ -27,6 +26,7 @@
             android:textSize="@dimen/font_smaller_than_standard"
             android:textCursorDrawable="@drawable/cursor"
             android:inputType="textPassword"
+            android:hint="@string/wifi_input_password"
             android:background="@color/colorTransparent"/>
         <View
             android:layout_width="240dp"
@@ -48,6 +48,7 @@
             android:layout_marginStart="188.7dp"
             android:layout_marginTop="94dp"
             android:textSize="@dimen/font_smaller_than_standard"
+            android:textColor="@color/colorGray4"
             android:text="@string/wifi_show_password"/>
 
         <ImageView
@@ -61,7 +62,6 @@
             android:src="@drawable/input_box_v_line"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="134dp"/>
-
         <TextView
             android:id="@+id/input_box_lbtn"
             android:layout_width="134dp"
