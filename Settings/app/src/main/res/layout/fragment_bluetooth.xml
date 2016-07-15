@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="53.3dp"
+        android:background="@color/colorGray2"
+        android:paddingEnd="@dimen/detail_activity_padding"
+        android:paddingStart="@dimen/detail_activity_padding" >
+
+        <TextView
+            android:id="@+id/bluetooth_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/wifi_off"
+            android:textColor="@color/colorWhite"
+            android:textSize="21.3dp" />
+
+        <com.lesports.bike.settings.widget.SwitchButton
+            android:id="@+id/bluetooth_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" >
+        </com.lesports.bike.settings.widget.SwitchButton>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/detail_activity_padding"
+        android:paddingStart="@dimen/detail_activity_padding" >
+
+        <LinearLayout
+            android:id="@+id/cur_bluetooth_list_box"
+            android:layout_width="match_parent"
+            android:layout_height="92.7dp"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6.7dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="13.3dp"
+                android:text="@string/bluetooth_current_select"
+                android:textColor="@color/colorGray3"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.3dp"
+                android:background="@color/colorGray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="41.3dp" >
+
+                <TextView
+                    android:id="@+id/blue_cur_select"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5.3dp"
+                    android:singleLine="true"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/loading" />
+
+                <ImageView
+                    android:id="@+id/loaded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/done" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.3dp"
+                android:layout_marginBottom="6.7dp"
+                android:background="@color/colorGray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bluetooth_list_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6.7dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/available_devices"
+                android:textColor="@color/colorGray3"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.3dp"
+                android:background="@color/colorGray" />
+
+            <ListView
+                android:id="@+id/bluetooth_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:listSelector="@color/colorTransparent" >
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

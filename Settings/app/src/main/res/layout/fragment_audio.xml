@@ -51,7 +51,6 @@
                     android:progressDrawable="@drawable/voice_seekbar_progress_horizontal"
                     android:thumb="@drawable/voice_seekbar_thumb"
                     android:thumbOffset="0dp" />
-                
             </LinearLayout>
 
             <TextView
@@ -90,89 +89,8 @@
                     android:progressDrawable="@drawable/voice_seekbar_progress_horizontal"
                     android:thumb="@drawable/voice_seekbar_thumb"
                     android:thumbOffset="0dp" />
-                
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13.3dp"
-                android:layout_marginTop="29.3dp"
-                android:text="@string/voice_notify"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13.3dp"
-                android:layout_marginTop="15.3dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
-
-                <ImageView
-                    android:layout_width="29.3dp"
-                    android:layout_height="29.3dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/mute" />
-
-                <SeekBar
-                    android:id="@+id/voice_notify_seek_bar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="17.5dp"
-                    android:max="100"
-                    android:maxHeight="10.7dip"
-                    android:minHeight="10.7dip"
-                    android:progressDrawable="@drawable/voice_seekbar_progress_horizontal"
-                    android:thumb="@drawable/voice_seekbar_thumb"
-                    android:thumbOffset="0dp" />
-                
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13.3dp"
-                android:layout_marginTop="29.3dp"
-                android:text="@string/press_voice"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="13.3dp"
-                android:layout_marginTop="15.3dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
-
-                <ImageView
-                    android:layout_width="29.3dp"
-                    android:layout_height="29.3dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/voice" />
-
-                <SeekBar
-                    android:id="@+id/voice_press_seek_bar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="17.5dp"
-                    android:max="100"
-                    android:maxHeight="10.7dip"
-                    android:minHeight="10.7dip"
-                    android:progressDrawable="@drawable/voice_seekbar_progress_horizontal"
-                    android:thumb="@drawable/voice_seekbar_thumb"
-                    android:thumbOffset="0dp" />
-                
-            </LinearLayout>
-            
         </LinearLayout>
-        
     </ScrollView>
 
 </LinearLayout>

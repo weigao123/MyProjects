@@ -36,6 +36,8 @@ public class WifiControl {
     public static final int WIFICIPHER_WEP = 2;
     public static final int WIFICIPHER_WPA = 3;
 
+    private String mConnectedTarget;
+
     private WifiControl(Context context) {
         this.context = context;
         mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
@@ -114,7 +116,7 @@ public class WifiControl {
                 wifiBean.passwordType = WIFICIPHER_NOPASS;
             }
             wifiBean.level = Math.abs(result.level);
-            if (!wifiMap.containsKey(wifiBean.name)) {
+            if (!wifiMap.containsKey(wifiBean.name) && (!wifiBean.name.equals(mConnectedTarget))) {
                 wifiBeanList.add(wifiBean);
                 wifiMap.put(wifiBean.name, wifiBean);
             }
@@ -152,11 +154,13 @@ public class WifiControl {
                 if (null != parcelableExtra) {
                     NetworkInfo networkInfo = (NetworkInfo) parcelableExtra;
                     callback.onConnectStateChanged(networkInfo);
+                    if (networkInfo.getState() == NetworkInfo.State.CONNECTED) {
+                        mConnectedTarget = networkInfo.getExtraInfo().replace("\"", "");
+                        refreshWifiList();
+                    }
                 }
             } else if (ConnectivityManager.CONNECTIVITY_ACTION.equals(intent.getAction())) {
                 NetworkInfo tmpInfo = (NetworkInfo) intent.getExtras().get(ConnectivityManager.EXTRA_NETWORK_INFO);
-                int a = 5;
-                a++;
             }
         }
     };
@@ -247,7 +251,7 @@ public class WifiControl {
                 mWifiManager.updateNetwork(config);
             } else {
                 int netId = mWifiManager.addNetwork(config);
-                if (netId > 0) {
+                if (netId >= 0) {
                     mWifiManager.saveConfiguration();
                     b = mWifiManager.enableNetwork(netId, true);
                 } else {

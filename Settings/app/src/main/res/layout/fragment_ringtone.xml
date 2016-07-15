@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ring_default"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="17dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/ring_default"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/ring_default_cb"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13dp"
+            android:background="@drawable/cb_bg"
+            android:button="@null" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/colorDark" />
+
+    <RelativeLayout
+        android:id="@+id/ring_wave"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="17dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/ring_wave"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/ring_wave_cb"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13dp"
+            android:background="@drawable/cb_bg"
+            android:button="@null" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/colorDark" />
+
+    <RelativeLayout
+        android:id="@+id/ring_beacon"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="17dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/ring_beacon"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/ring_beacon_cb"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13dp"
+            android:background="@drawable/cb_bg"
+            android:button="@null" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/colorDark" />
+
+    <RelativeLayout
+        android:id="@+id/ring_blink"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="17dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/ring_blink"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/ring_blink_cb"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13dp"
+            android:background="@drawable/cb_bg"
+            android:button="@null" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/colorDark" />
+
+    <RelativeLayout
+        android:id="@+id/ring_knock"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingLeft="17dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="@string/ring_knock"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/ring_knock_cb"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13dp"
+            android:background="@drawable/cb_bg"
+            android:button="@null" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/colorDark" />
+
+</LinearLayout>

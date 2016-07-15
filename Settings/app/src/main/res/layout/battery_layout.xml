@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#cc000000" >
+
+    <TextView
+         android:id="@+id/battery_no_lcok_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/battery_big_bg"
+        android:gravity="center"
+        android:textSize="24sp"/>
+
+    <RelativeLayout
+        android:id="@+id/battery_lcok_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/battery_lcok_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="82dp"
+            android:src="@drawable/battery_warning" />
+
+        <TextView
+            android:id="@+id/battery_lcok_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/battery_lcok_image"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textColor="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/battery_lcok_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="33dp"
+            android:background="@drawable/battery_small_bg"
+            android:gravity="center"
+            android:text="@string/battery_unlock"
+            android:textSize="24sp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,6 +1,10 @@
 package com.lesports.bike.settings.ui;
 
+import android.app.Activity;
 import android.app.admin.DevicePolicyManager;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -22,9 +26,10 @@ import com.lesports.bike.settings.widget.PasswordInput;
 public class PasswordFragment extends BaseFragment implements View.OnClickListener {
 
     public static final String PASSWORD_TODO = "todo";
-    public static final int PASSWORD_ON_LOCK = 1;
-    public static final int PASSWORD_OFF_LOCK = 2;
-    public static final int PASSWORD_MODIFY = 3;
+    public static final int PASSWORD_VERIFY = 1;
+    public static final int PASSWORD_ON_LOCK = 2;
+    public static final int PASSWORD_OFF_LOCK = 3;
+    public static final int PASSWORD_MODIFY = 4;
 
     private LockPatternUtils mLockPatternUtils;
     PasswordInput mPasswordInput;
@@ -78,8 +83,10 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
                 mPasswordWrongTip.setText(R.string.password_wrong);
                 break;
             case PASSWORD_MODIFY:
+            case PASSWORD_VERIFY:
                 mPasswordTitle.setText(R.string.password_verify);
                 mPasswordWrongTip.setText(R.string.password_wrong);
+                break;
         }
     }
 
@@ -104,12 +111,12 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
                     return;
                 }
                 mLockPatternUtils.saveLockPassword(password, DevicePolicyManager.PASSWORD_QUALITY_NUMERIC, false);
-                PopupUtils.popupOverlayView(getActivity(), R.string.password_set_success, true);
+                PopupUtils.popupView(getActivity(), getTipView(R.string.password_set_success), true, true);
                 break;
             case PASSWORD_OFF_LOCK:
                 if (mLockPatternUtils.checkPassword(password)) {
                     mLockPatternUtils.clearLock(true);
-                    PopupUtils.popupOverlayView(getActivity(), R.string.password_close, true);
+                    PopupUtils.popupView(getActivity(), getTipView(R.string.password_close), true, true);
                 } else {
                     clearPasswordView();
                     mPasswordWrongTip.setVisibility(View.VISIBLE);
@@ -121,6 +128,15 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
                     mTodo = PASSWORD_ON_LOCK;
                     mPasswordTitle.setText(R.string.password_input);
                     mPasswordWrongTip.setText(R.string.password_not_match);
+                } else {
+                    clearPasswordView();
+                    mPasswordWrongTip.setVisibility(View.VISIBLE);
+                }
+                break;
+            case PASSWORD_VERIFY:
+                if (mLockPatternUtils.checkPassword(password)) {
+                    getActivity().setResult(Activity.RESULT_OK);
+                    getActivity().finish();
                 } else {
                     clearPasswordView();
                     mPasswordWrongTip.setVisibility(View.VISIBLE);
@@ -199,5 +215,15 @@ public class PasswordFragment extends BaseFragment implements View.OnClickListen
                 }
             }, 50);
         }
+    }
+
+    private View getTipView(int resource) {
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.view_translucent, null);
+        TextView textView = (TextView) view.findViewById(R.id.popup_content);
+        Shader shader_gradient = new LinearGradient(0, 10, 0, 80, Color.parseColor("#00f79d"),
+                Color.parseColor("#cc0cb7e2"), Shader.TileMode.CLAMP);
+        textView.getPaint().setShader(shader_gradient);
+        textView.setText(getString(resource));
+        return view;
     }
 }

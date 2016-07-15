@@ -17,4 +17,8 @@
     <color name="colorDark">#2a2a2a</color>
     <color name="green">#00f79d</color>
     <color name="blue">#cc0cb7e2</color>
+    <color name="black">#ff000000</color>
+    <color name="grey">#24ffffff</color>
+    <color name="gradient_start_color">#00f79d</color>
+    <color name="gradient_end_color">#0cb8e2</color>
 </resources>

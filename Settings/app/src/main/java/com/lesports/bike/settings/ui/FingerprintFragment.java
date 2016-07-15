@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.lesports.bike.settings.R;
 import com.lesports.bike.settings.control.FingerprintControl;
 import com.lesports.bike.settings.utils.ActivityUtils;
-import com.lesports.bike.settings.utils.DensityUtils;
+import com.lesports.bike.settings.utils.SizeUtils;
 import com.lesports.bike.settings.utils.PopupUtils;
 import com.lesports.bike.settings.utils.UIUtils;
 
@@ -22,7 +22,6 @@ public class FingerprintFragment extends BaseFragment {
     private static int[] mFpName = new int[]{R.string.fp_fp1, R.string.fp_fp2, R.string.fp_fp3,
             R.string.fp_fp4, R.string.fp_fp5};
     private FingerprintControl mFingerprintControl;
-    private PopupUtils.PopupControl mPopupControl;
     @Override
     protected void initViewAndData() {
         mFingerprintControl = FingerprintControl.getInstance(getActivity());
@@ -43,7 +42,7 @@ public class FingerprintFragment extends BaseFragment {
                         onDeleteItem(position + 1);
                     }
                 });
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, DensityUtils.dp2px(getActivity(), 55));
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, SizeUtils.dp2px(getActivity(), 55));
                 item.setLayoutParams(params);
                 root.addView(item);
             }
@@ -52,7 +51,7 @@ public class FingerprintFragment extends BaseFragment {
             RelativeLayout item = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.fp_list_item, null);
             ((TextView)item.findViewById(R.id.fp_name)).setText(getResources().getText(R.string.fp_add_fp));
             item.findViewById(R.id.fp_delete).setVisibility(View.INVISIBLE);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, DensityUtils.dp2px(getActivity(), 55));
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, SizeUtils.dp2px(getActivity(), 55));
             item.setLayoutParams(params);
             item.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -74,37 +73,26 @@ public class FingerprintFragment extends BaseFragment {
     }
 
     private void onDeleteItem(final int position) {
-        mFrameLayout2.setClickable(true);
         final View view = LayoutInflater.from(getActivity()).inflate(R.layout.fp_delete_fp, null);
-        mFrameLayout2.addView(view);
         TextView textView1 = (TextView) view.findViewById(R.id.fp_del_cancel);
         TextView textView2 = (TextView) view.findViewById(R.id.fp_del_confirm);
+        UIUtils.makeColor(textView1, 13, 33, getResources().getColor(R.color.green), getResources().getColor(R.color.blue));
+        UIUtils.makeColor(textView2, 13, 33, getResources().getColor(R.color.green), getResources().getColor(R.color.blue));
         textView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mFrameLayout2.setClickable(false);
-                mFrameLayout2.removeView(view);
-                mPopupControl.closeView();
+                PopupUtils.removeView(getActivity(), view);
             }
         });
         textView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mFrameLayout2.setClickable(false);
-                mFrameLayout2.removeView(view);
-                mPopupControl.closeView();
                 mFingerprintControl.deleteFingerprint(position);
+                PopupUtils.removeView(getActivity(), view);
                 refreshUI();
             }
         });
-        UIUtils.makeColor(textView1, 13, 33, getResources().getColor(R.color.green), getResources().getColor(R.color.blue));
-        UIUtils.makeColor(textView2, 13, 33, getResources().getColor(R.color.green), getResources().getColor(R.color.blue));
-        View viewCopy = LayoutInflater.from(getActivity()).inflate(R.layout.fp_delete_fp, null);
-        textView1 = (TextView) viewCopy.findViewById(R.id.fp_del_cancel);
-        textView2 = (TextView) viewCopy.findViewById(R.id.fp_del_confirm);
-        UIUtils.makeColor(textView1, 13, 33, getResources().getColor(R.color.green), getResources().getColor(R.color.blue));
-        UIUtils.makeColor(textView2, 13, 33, getResources().getColor(R.color.green), getResources().getColor(R.color.blue));
-        mPopupControl = PopupUtils.popupOverlayView2(getActivity(), viewCopy);
+        PopupUtils.popupView(getActivity(), view);
     }
 
     @Override

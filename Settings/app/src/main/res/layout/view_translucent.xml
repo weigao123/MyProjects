@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/green_box"
+        android:includeFontPadding="false"
         android:gravity="center" />
 
 </FrameLayout>

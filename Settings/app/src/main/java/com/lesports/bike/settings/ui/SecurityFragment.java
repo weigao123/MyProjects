@@ -1,6 +1,9 @@
 package com.lesports.bike.settings.ui;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +11,8 @@ import android.widget.TextView;
 
 import com.android.internal.widget.LockPatternUtils;
 import com.lesports.bike.settings.R;
+import com.lesports.bike.settings.application.SettingApplication;
+import com.lesports.bike.settings.control.FingerprintControl;
 import com.lesports.bike.settings.utils.ActivityUtils;
 import com.lesports.bike.settings.widget.SwitchButton;
 
@@ -38,7 +43,10 @@ public class SecurityFragment extends BaseFragment implements View.OnClickListen
         mSwitchButton.setOnClickListener(this);
         mPasswordManager.setOnClickListener(this);
         mFingerprintManager.setOnClickListener(this);
-
+        if (!FingerprintControl.getInstance(getActivity()).hasFingerPrint()) {
+            getActivity().findViewById(R.id.fingerprint_manager_container).setVisibility(View.GONE);
+            ((TextView)getActivity().findViewById(R.id.lockscreen_password_tip)).setText(getString(R.string.lockscreen_password_tip_no_fingerprint));
+        }
         mLockPatternUtils = new LockPatternUtils(getActivity());
     }
 
@@ -59,7 +67,8 @@ public class SecurityFragment extends BaseFragment implements View.OnClickListen
                 break;
             case R.id.fingerprint_manager:
                 if (mSwitchButton.isSwitchOn()) {
-                    ActivityUtils.startFragmentActivity(getActivity(), FingerprintFragment.class);
+                    bundle.putInt(PasswordFragment.PASSWORD_TODO, PasswordFragment.PASSWORD_VERIFY);
+                    ActivityUtils.startFragmentActivityForResult(this, PasswordFragment.class, PasswordFragment.PASSWORD_VERIFY, bundle);
                 }
                 break;
         }
@@ -78,6 +87,15 @@ public class SecurityFragment extends BaseFragment implements View.OnClickListen
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PasswordFragment.PASSWORD_VERIFY) {
+            if (resultCode == Activity.RESULT_OK) {
+                ActivityUtils.startFragmentActivity(getActivity(), FingerprintFragment.class);
+            }
+        }
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         refreshState();
@@ -85,8 +103,10 @@ public class SecurityFragment extends BaseFragment implements View.OnClickListen
 
     private void refreshState() {
         if (mLockPatternUtils.isLockPasswordEnabled()) {
+            Settings.Global.putInt(SettingApplication.getContext().getContentResolver(), Settings.Global.FINGERPRINT_UNLOCK, 1);
             onLockView();
         } else {
+            Settings.Global.putInt(SettingApplication.getContext().getContentResolver(), Settings.Global.FINGERPRINT_UNLOCK, 0);
             offLockView();
         }
     }

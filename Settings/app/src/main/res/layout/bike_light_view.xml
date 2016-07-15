@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="@color/grey" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="140.7dp"
+                android:layout_marginTop="5.3dp"
+                android:src="@drawable/down" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13.3dp"
+            android:layout_marginTop="30.7dp"
+            android:src="@drawable/le_t_v_super_bike" />
+
+        <ImageView
+            android:id="@+id/head_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="86.7dp"
+            android:layout_marginTop="33.3dp"
+            android:src="@drawable/head_light"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="125.3dp"
+            android:layout_marginTop="86.7dp"
+            android:src="@drawable/head_light_instructions" />
+
+        <Button
+            android:id="@+id/head_light_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="228dp"
+            android:layout_marginTop="53.3dp"
+            android:background="@drawable/head_light_button_close" />
+
+        <ImageView
+            android:id="@+id/laser_light_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="64.7dp"
+            android:src="@drawable/left"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/laser_light_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="216dp"
+            android:layout_marginTop="64.7dp"
+            android:src="@drawable/right"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="206.7dp"
+            android:layout_marginTop="154dp"
+            android:src="@drawable/laser_light_instructions" />
+
+        <Button
+            android:id="@+id/head_out_line_light_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="228dp"
+            android:layout_marginTop="216.7dp"
+            android:background="@drawable/laser_light_button_close" />
+
+        <ImageView
+            android:id="@+id/tail_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="78.7dp"
+            android:layout_marginTop="359.5dp"
+            android:src="@drawable/tail_light"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="125.3dp"
+            android:layout_marginTop="354dp"
+            android:src="@drawable/tail_light_instructions" />
+
+        <Button
+            android:id="@+id/tail_light_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="228dp"
+            android:layout_marginTop="369.3dp"
+            android:background="@drawable/tail_light_button_close" />
+    </RelativeLayout>
+
+</LinearLayout>

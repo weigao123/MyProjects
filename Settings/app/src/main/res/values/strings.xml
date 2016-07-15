@@ -6,7 +6,7 @@
     <string name="cancel">Cancel</string>
     <string name="confirm">Confirm</string>
 
-    <!--home-->
+    <!-- home -->
     <string name="audio_profiles">Audio profile</string>
     <string name="wifi">WLAN</string>
     <string name="data_usage">Data usage</string>
@@ -22,90 +22,37 @@
     <string name="unbind_bike">Unbind bike</string>
     <string name="input_box_title">Lesports</string>
 
+    <!-- data -->
+    <string name="data_on">On</string>
+    <string name="data_off">Off</string>
+    <string name="data_of_the_rest">Residual flow of this month</string>
+    <string name="data_of_use">The use of this month</string>
+
     <!-- security -->
-    <string name="lockscreen_password">锁屏密码</string>
-    <string name="lockscreen_password_tip">在锁屏时需输入密码或指纹</string>
-    <string name="password_manager">密码设定</string>
-    <string name="fingerprint_manager">指纹管理</string>
-    <string name="password_input">输入密码</string>
-    <string name="password_input_check_new">验证新密码</string>
-    <string name="password_not_match">密码不一致, 请重新输入</string>
-    <string name="password_wrong">密码错误, 请重新输入</string>
-    <string name="password_set_success">密码设定成功</string>
-    <string name="password_close">密码关闭</string>
-    <string name="password_verify">密码验证</string>
+    <string name="lockscreen_password">Lock screen password</string>
+    <string name="lockscreen_password_tip">Need to enter a password or fingerprint</string>
+    <string name="lockscreen_password_tip_no_fingerprint">Need to enter a password</string>
+    <string name="password_manager">Password setting</string>
+    <string name="fingerprint_manager">Fingerprint manager</string>
+    <string name="password_input">Enter password</string>
+    <string name="password_input_check_new">Verify new password</string>
+    <string name="password_not_match">Password is not consistent, please re-enter</string>
+    <string name="password_wrong">Password is wrong, please re-enter</string>
+    <string name="password_set_success">Password set successfully</string>
+    <string name="password_close">Disable password</string>
+    <string name="password_verify">Password verify</string>
 
-    <!-- wifi -->
-    <string name="wifi_please_open">打开WLAN可查看可用网络</string>
-    <string name="wifi_current_select">当前连接：</string>
-    <string name="wifi_candidate">选择网络</string>
-    <string name="wifi_on">开</string>
-    <string name="wifi_oning">正在打开......</string>
-    <string name="wifi_off">关</string>
-    <string name="wifi_offing">正在关闭......</string>
-    <string name="wifi_connect">连接</string>
-    <string name="wifi_show_password">显示密码</string>
-    <string name="wifi_input_password">输入密码</string>
-
-    <!-- ppt -->
-    <string name="ptt_please_open">打开PTT对讲功能可选择对讲频道</string>
-    <string name="ptt_channel_select">当前选择频道：</string>
-    <string name="ptt_channel">频道</string>
-    <string name="ptt_on">开</string>
-    <string name="ptt_off">关</string>
-
-    <!-- audio -->
-    <string name="audio">声音</string>
-    <string name="ringtone">铃声</string>
-    <string name="music">音乐声</string>
-    <string name="voice_notify">语音提醒</string>
-    <string name="press_voice">按键声</string>
-
-    <!-- display -->
-    <string name="display_title">显示</string>
-    <string name="brightness">亮度</string>
-    <string name="brightness_autio_adjust">亮度自动调节</string>
-    <string name="save_mode">节电模式</string>
-    <string name="save_mode_detail">在非骑行状态下1分钟未操作将自动锁屏</string>
-
-    <!-- date_time -->
-    <string name="date_time_title">日期和时间</string>
-    <string name="auto_set_date_time">自动设置日期和时间</string>
-    <string name="auto_set_date_time_detail">使用网络提供的时间</string>
-    <string name="auto_set_timezone">自动设置时区</string>
-    <string name="auto_set_timezone_detail">使用网络提供的时区</string>
-    <string name="manual_set_date">设置日期</string>
-    <string name="manual_set_time">设置时间</string>
-    <string name="manual_set_timezone">设置时区</string>
-    <string name="cancel_date">取消</string>
-    <string name="finish_date">完成</string>
-    <string name="timezone_set">时区设置</string>
-    <string name="no_date_dispaly">请设置日期</string>
-    <string name="no_time_display">请设置时间</string>
-    <string name="no_timezone_display">请设置时区</string>
-    <string name="year">年</string>
-    <string name="month">月</string>
-    <string name="day">日</string>
-    <string name="Sunday">星期日</string>
-    <string name="Monday">星期一</string>
-    <string name="Tuesday">星期二</string>
-    <string name="Wednesday">星期三</string>
-    <string name="Thursday">星期四</string>
-    <string name="Friday">星期五</string>
-    <string name="Saturday">星期六</string>
-
-    <!--fingerprint-->
-    <string name="fp_manager">指纹管理</string>
-    <string name="fp_add_fp">添加指纹</string>
-    <string name="fp_del_fp">确定删除指纹？</string>
-    <string name="fp_enroll_tip">请反复拿起和放下手指\n直到完成100%录入</string>
-    <string name="fp_enroll_tip2">指纹已添加完毕\n您可以使用指纹解锁超级自行车</string>
-    <string name="fp_fp1">指纹一</string>
-    <string name="fp_fp2">指纹二</string>
-    <string name="fp_fp3">指纹三</string>
-    <string name="fp_fp4">指纹四</string>
-    <string name="fp_fp5">指纹五</string>
-
+    <!-- fingerprint -->
+    <string name="fp_manager">Fingerprint manager</string>
+    <string name="fp_add_fp">Add fingerprint</string>
+    <string name="fp_del_fp">Are you sure to delete fingerprint ?</string>
+    <string name="fp_enroll_tip">Please pick up and drop your finger again and again until the completion of the 100% entry</string>
+    <string name="fp_enroll_tip2">The fingerprint has been added \n you can use the fingerprint to unlock the super bike</string>
+    <string name="fp_fp1">Fingerprint 1</string>
+    <string name="fp_fp2">Fingerprint 2</string>
+    <string name="fp_fp3">Fingerprint 3</string>
+    <string name="fp_fp4">Fingerprint 4</string>
+    <string name="fp_fp5">Fingerprint 5</string>
     <string name="password_keyboard_0">0</string>
     <string name="password_keyboard_1">1</string>
     <string name="password_keyboard_2">2</string>
@@ -116,6 +63,76 @@
     <string name="password_keyboard_7">7</string>
     <string name="password_keyboard_8">8</string>
     <string name="password_keyboard_9">9</string>
+
+    <!-- wifi -->
+    <string name="wifi_please_open">Turn on WLAN to see available network</string>
+    <string name="wifi_current_select">Current connection:</string>
+    <string name="wifi_candidate">Select network</string>
+    <string name="wifi_on">On</string>
+    <string name="wifi_oning">Wlan is turning on ......</string>
+    <string name="wifi_off">Off</string>
+    <string name="wifi_offing">Wlan is turning off ......</string>
+    <string name="wifi_connect">Connect</string>
+    <string name="wifi_show_password">Display</string>
+    <string name="wifi_input_password">Enter password</string>
+
+    <!-- ppt -->
+    <string name="ptt_please_open">Turn on PTT to choose intercom channel</string>
+    <string name="ptt_channel_select">Current channel:</string>
+    <string name="ptt_channel">Channel</string>
+    <string name="ptt_on">On</string>
+    <string name="ptt_off">Off</string>
+
+    <!-- audio -->
+    <string name="audio">Audio profile</string>
+    <string name="ringtone">Ringtone</string>
+    <string name="music">Music</string>
+
+    <!-- display -->
+    <string name="display_title">Display</string>
+    <string name="brightness">Brightness</string>
+    <string name="brightness_autio_adjust">Automatic brightness</string>
+    <string name="save_mode">Power saving mode</string>
+    <string name="save_mode_detail">Automatically lock screen after 1 minute without operation in non riding condition</string>
+
+    <!-- date_time -->
+    <string name="date_time_title">Date &amp; time</string>
+    <string name="auto_set_date_time">Automatic date &amp; time</string>
+    <string name="auto_set_date_time_detail">Use network-provided time</string>
+    <string name="auto_set_timezone">Automatic time zone</string>
+    <string name="auto_set_timezone_detail">Use network-provided time zone</string>
+    <string name="manual_set_date">Set date</string>
+    <string name="manual_set_time">Set time</string>
+    <string name="manual_set_timezone">Set time zone</string>
+    <string name="cancel_date">Cancel</string>
+    <string name="finish_date">OK</string>
+    <string name="timezone_set">Time zone setting</string>
+    <string name="no_date_dispaly">Please set date</string>
+    <string name="no_time_display">Please set time</string>
+    <string name="no_timezone_display">Please set time zone</string>
+    <string name="year">/</string>
+    <string name="month">/</string>
+    <string name="day">" "</string>
+    <string name="Sunday">Sunday</string>
+    <string name="Monday">Monday</string>
+    <string name="Tuesday">Tuesday</string>
+    <string name="Wednesday">Wednesday</string>
+    <string name="Thursday">Thursday</string>
+    <string name="Friday">Friday</string>
+    <string name="Saturday">Saturday</string>
+
+    <!-- usb_connect -->
+    <string name="charge_only">Charge only</string>
+    <string name="media_charge">Media and charge</string>
+
+    <!-- ringtone -->
+    <string name="ring_default">Opening (default)</string>
+    <string name="ring_wave">Waves</string>
+    <string name="ring_beacon">Beacon</string>
+    <string name="ring_blink">Twinkle</string>
+    <string name="ring_knock">Tapping</string>
+
+    <!-- about -->
     <string name="about_help">Help</string>
     <string name="help_q01">Q&#038;A</string>
     <string name="help_q02">如何联系客服？</string>
@@ -161,201 +178,222 @@
     <!-- 使用条款 -->
     <string name="tos_home_title">Terms of use</string>
     <string name="tos_item_1">Terms of service</string>
-    <string name="tos_item_2">Privacy agreement</string>
-    <string name="tos_service_1">乐视超级自行车服务使用协议</string>
-    <string name="tos_content_1">一、接受协议\n
-一旦您注册成为乐视超级自行车的用户，便表示您（以下简称“用户”）已经完全理解并同意接受本协议（以下简称“协议”）。
-        乐视体育文化发展（北京）有限公司（以下简称“乐视”）可在经过用户同意后更改 “协议”。除另行明确声明外，
-        任何使我们乐视超级自行车范围扩大或功能增强的新内容均受本协议约束。
-\n\n
-二、乐视超级自行车\n
-2.1 乐视超级自行车是指乐视生产的自行车产品。不论用户通过何种渠道有偿或者无偿取得乐视超级自行车，均受此协议约束。\n
-2.2除非另有明确规定，增强或强化乐视目前服务的任何新功能，包括新产品以及新增加的服务，均无条件地适用本协议。\n
-2.3除非经过用户明示愿意支付相关费用，否则乐视将不再向用户收取硬件费用以外的服务费用。用户自行负担使用乐视超级自行车所需其他费用。
-        （如为接入互联网而支付的电话费及上网费、为使用移动网络而支付的手机费）\n
-\n
-三、用户使用规则\n
-3.1用户有责任维持注册的账号和密码的安全，用户应对所有用本人的密码及帐号的活动负完全的责任。用户同意∶(a) 本人的密码或帐号遭到未获授权的使用，或者发生其它任何安全问题时，将立即通知乐视；且(b)每次使用完毕都会把本人的帐号关闭。如未能依前述规定行事， 对于任何人利用该密码及帐号所进行的任何行为，用户应负完全的责任。对于因此而产生的任何损失或损害，乐视无法也不承担任何责任。
-根据有关法律法规，乐视在此郑重提请用户注意，任何经由我们的服务以上载、张贴、发送电子邮件或任何其它方式传送的资讯、资料、
-        文字、软件、音 乐、音讯、照片、图形、视讯、信息或其它资料（以下简称“内容”），无论系公开还是私下传送，均由内容提供者、
-        上传者承担责任。乐视无法控制经由我们的服务传送之内容，因此不保证内容的正确性、完整性或品质。用户已预知使用我们的服务时，
-        可能会接触到令人不快、不适当或令人厌恶之内容。在任何情况下，乐视均不为任何内容负责，包含但不限于任何内容之任何错误或遗漏，
-        以及经由我们的服务以张贴、发送电子邮件或其它方式传送任何内容而衍生之任何损失或损害。
-        但乐视有权依法停止传输任何前述内容并采取相应行动，包括但不限于暂停用户使用我们的服务的全部或部分，保存有关记录，
-        并向有关机关报告。\n
-3.2 您承诺仔细阅读和充分理解产品说明文档的要求和安全警示，正确安全使用乐视超级自行车产品。\n
-\n
-四、隐私保护\n
-乐视保证不对外公开或向第三方提供单个用户的注册资料及用户在使用网络服务时存储在乐视的非公开内容，但下列情况除外：\n
-4.1.1 事先获得用户的明确授权；\n
-4.1.2 根据有关的法律法规要求；\n
-4.1.3 按照相关政府主管部门的要求；\n
-4.1.4 为维护社会公众的利益；\n
-4.1.5 为维护乐视公司的合法权益；\n
-4.1.6 其他需要公开、编辑或透露个人信息的情况。\n
-4.2 乐视可能会与第三方合作向用户提供相关的网络服务，在此情况下，如该第三方同意承担与乐视同等的保护用户隐私的责任，
-        则乐视可在征得用户同意后将用户的注册资料等提供给该第三方。\n
-4.3 在不透露单个用户隐私资料的前提下，乐视公司有权对整个用户数据库进行分析并对用户数据库进行合理范围内商业上的利用。\n
-\n
-五、知识产权\n
-5.1 乐视公司提供的硬件及服务中包含的任何文本、图片、图形、音频和/或视频资料均受版权、商标和/或其它财产所有权法律的保护。
-        未经相关权利人同意，上述资 料均不得在任何媒体直接或间接发布、播放、出于播放或发布目的而改写或再发行，
-        或者被用于其他任何商业目的。所有这些资料或资料的任何部分仅可作为私人用 途而保存在本地存储介质里。
-        乐视不就由上述资料产生或在传送或递交全部或部分上述资料过程中产生的延误、不准确、
-        错误和遗漏或从中产生或由此产生的任何损 害赔偿，以任何形式向用户或任何第三方负法律责任。\n
-5.2 乐视为提供硬件及服务而使用的任何软件（包括但不限于软件中所含的任何图象、照片、动画、录像、录音、音乐、
-        文字和附加程序、随附的帮助材料）的一切权利 均属于该软件的著作权人，未经该软件的著作权人许可，
-        用户不得对该软件进行反向工程（reverse engineer）、反向编译（decompile）或反汇编（disassemble）等。\n
-\n
-六、免责声明\n
-6.1 对于因不可抗力或乐视不能控制的原因（包括但不限于自然灾害、政策变动等）造成的硬件损毁、服务中断、服务增删，
-        乐视不承担任何责任，但将尽力减少因此而给用户造成的损失和影响。\n
-6.2 乐视对于任何自本公司平台、网站、论坛而获得的他人的信息、内容或者广告宣传等任何资讯（以下统称“信息”），
-        不保证真实、准确和完整性。如果任何单位或者个人通过上述“信息”而进行任何行为，须自行甄别真伪和谨慎预防风险。
-        否则，无论何种原因，本公司不对任何非与乐视直接发生的交易和/或行为承担任何直接、间接、附带或衍生的损失和责任。\n
-6.3用户同意，对于乐视向用户提供的下列产品或者服务的质量缺陷本身及其引发的任何损失，乐视无需承担任何责任：\n
-6.3.1 乐视向用户免费提供的各项网络服务；\n
-6.3.2 乐视向用户赠送的任何产品或者服务；\n
-6.3.3 乐视向收费网络服务用户附赠的各种产品或者服务；\n
-6.3.4 用户资料遭到未授权的使用或修改；\n
-6.3.5 其他与本服务相关的事宜。\n
-\n
-七、通知送达\n
-7.1 本协议项下乐视对于用户所有的通知均可通过网页公告、电子邮件、手机短信或其他常规的信件传送等方式进行；
-        该等通知于发送之日视为已送达收件人。\n
-7.2 用户对于乐视的通知应当通过乐视对外正式公布的通信地址、传真号码、电子邮件地址等联系信息进行送达。\n
-\n
- 八、责任限制\n
-8.1 用户明确了解并同意，基于以下原因造成的包括但不限于利润、信誉、应用、数据损失或其它无形损失，乐视不承担任何直接、
-        间接、附带、特别、衍生性或惩罚性赔偿责任（即使乐视事先已被告知发生此种赔偿之可能性亦然）：
-        (i)我们的服务之使用或无法使用，(ii)为替换从或通过我们的服务购买或取得之任何商品、数据、信息、服务，收到的讯息，
-        或缔结之交易而发生的成本，(iii)用户的传输或数据遭到未获授权的存取或变造，(iv) 任何第三方在我们的服务中所作之声明或行为，
-        或(v)与我们的服务相关的其它事宜，但本协议有明确规定的除外。\n
-8.2 对于违法使用本产品，超出产品合理用途使用本产品，违反产品说明文档或者警示信息使用本产品造成的后果，
-        乐视不承担责任。因此给乐视造成声誉或者经济损失的，乐视有权索赔。\n
-\n
-九、服务的修改\n
-乐视有权在通知用户后暂时或永久修改或终止我们的服务（或其任何部分）。用户同意对于我们的服务所作的任何修改、暂停或终止，乐视对用户和任何第三人均无需承担任何责任。\n
-\n
-十、终止服务\n
-用户同意乐视有权基于其自行之合理考虑，因包含但不限于缺乏使用或乐视认为用户已经违反本协议的文字及精神的理由，
-        而终止用户的密码、帐号或我们的服务之使用（或服务之任何部分），并将用户在我们的服务内的任何内容加以移除并删除。
-        乐视亦得依其自行之合理考虑，于通知之情形下，终止我们 的服务或其任何部分。
-        该情况下用户同意若我们的服务之使用被中断或终止或用户的帐号及相关信息和文件被关 闭或删除，
-        乐视对用户或任何第三人均不承担任何责任。\n
-\n
-十一、法律管辖与适用\n
-11.1 本服务协议的生效、履行、解释及争议的解决均适用中华人民共和国法律。\n
-11.2 如就本协议内容或其执行发生任何争议，应尽量友好协商解决；协商不成时，则争议各方均可向乐视所在地的人民法院提起诉讼\n
-特别提示：用户在进行注册之前，请确保本人已经完全理解并接受本协议所有条款（尤其是免责条款），
-        用户正式注册应表明用户已经完全理解并接受本协议所有条款，尤其是免责和责任限制条款。\n
+    <string name="tos_item_2">Privacy policy</string>
+    <string name="tos_content_1">Welcome to LeEco.  We and our group of affiliated companies provide websites, features on websites, 
+        and other products and services when you use or purchase from our websites, or use our products or software.  
+        These Terms of Service govern your purchase, access and use of products and services offered by or on behalf of Le Technology, 
+        Inc. and its Affiliates (“LeEco”, “we” or “us”), including those offered or provided on mobile phones, televisions, TV Boxes, accessories, 
+        websites, and software, including mobile applications (“LeEco Services”). For the purposes of these Terms of Service,
+         “Affiliate” means the group of entities which are controlling, controlled by or under common control with Le Technology, 
+         Inc., and “control” means possessing, directly or indirectly, the power to direct or cause the direction of the management, 
+         policies or operations of an entity, whether through ownership of voting securities, by contract or otherwise.\n\n
+         By purchasing or using any LeEco Services you are agreeing to be bound by these Terms of Service, including the arbitration 
+         agreement and class action waiver described below. Please read them carefully.\n\n
+         We offer a range of products and services, and additional terms and fees may apply to particular LeEco Services. 
+         Those additional terms will be available with the relevant LeEco Services and become part of your agreement with us if you use those 
+         LeEco Services. In case of a conflict between these Terms of Service and those additional terms, the additional terms will control for 
+         that conflict.\n\n
+         These Terms of Service are intended for users and purchasers of LeEco Services located in North America,
+          including the United States of America, including its territories and possessions (collectively, the “United States”), Canada and Mexico.  
+          If you have purchased, accessed or used a LeEco Service outside North America, please consult the applicable LeEco terms and 
+          conditions for your territory.  To the extent that there are conflicts between the applicable LeEco terms and conditions for your 
+          territory and these LeEco Terms of Service for North America, the applicable LeEco terms and conditions for your territory will control. \n\n 
+         1.MINIMUM AGE\n\n
+         LeEco Services may provide access to content, products or services that are not appropriate for children under the age of 14.
+          Persons under the age of 14 may only access or use LeEco Services under the supervision of a parent or legal guardian.\n\n
+          2.PRIVACY\n\n
+          Personally identifying information is subject to our Privacy Policy, which is incorporated and made a part of these Terms of Service. 
+           Please review our Privacy Policy at www.leeco.com/privacy to understand how we collect and use your information when you use LeEco Services.\n\n
+          3.NOTICES FROM LEECO\n\n
+          If LeEco needs to contact you about your LeEco Services or account, by signing up for or using any LeEco Services, 
+          you consent to receive the notices electronically in the manner consistent with the contact information you provide, including email, 
+          text messages, or other communications between your desktop or mobile device and us.  You agree that any notices, agreements, 
+          disclosures or other communications that we send to you electronically will satisfy any legal communication requirements, 
+          including that those communications be in writing.\n\n
+          4.USING LEECO SERVICES\n\n
+          a.Access.  Subject to your compliance with these Terms of Service and your payment of any applicable fees, LeEco grants you a limited, 
+          non-exclusive, non-transferable, non-sublicensable right to access and make personal and non-commercial use of the LeEco Services.  
+          Additionally, the software license terms found below apply to any software (including any updates or upgrades to the software and any 
+          related documentation) that we make available to you from time to time for your use in connection with LeEco Services. No portion of the 
+          LeEco Services may be reproduced in any form or by any means. You agree not to modify, rent, lease, loan, sell, distribute, 
+          or create derivative works based on the LeEco Services, in any manner, and you will not exploit the LeEco Services in any unauthorized way
+           whatsoever, including but not limited to, using the LeEco Services to transmit any computer viruses, worms, Trojan horses or other malware,
+            or by trespass or burdening network capacity. You further agree not to use the LeEco Services in any manner to harass, abuse, 
+            stalk, threaten, defame or otherwise infringe or violate the rights of any other party, and that LeEco is not in any way responsible for 
+            any such use by you.\n\n
+            b.Accounts and Security.  Use of the LeEco Services may require an account ID and may be subject to fees and different or additional 
+            terms depending on the service.  You are responsible for maintaining the confidentiality of your account ID and password for each 
+            LeEco Service.  You agree to notify us immediately at Privacy-US@le.com of any unauthorized use or theft of your account or any 
+            other breach of security.  You are responsible the activity that happens on or through your account.  \n\n
+            c.Cloud Services. If LeEco offers cloud services and you register for cloud services, certain cloud features, including, but not limited to, 
+            cloud photo library, photo stream, cloud photo sharing, back up and phone locator functionality may be accessed directly from the
+             LeEco Services.  Your use of cloud services and these features is subject at all times to the terms and conditions of the cloud services as 
+             made available to you and updated from time to time.\n\n
+             d.Sync. If you choose to use any synchronization (“sync”) features included as part of the LeEco Services to synchronize your bookmarks, 
+             notes, collections, and blog or podcast subscription data across your LeEco Services and devices, you acknowledge that data related to
+              those sync features will be sent to LeEco and stored in conjunction with your LeEco account ID in order to sync among the devices that
+               are authorized to access synced content through your account ID. \n\n
+               e.Content. By using any of the LeEco Services, you may encounter content, including content, data, information, applications or 
+               materials from third parties (“Third Party Materials”), including materials provided by other users, bloggers and third-party licensors, 
+               syndicators, aggregators and/or reporting services, or links to web sites or applications.  All statements and/or opinions expressed 
+               in these materials, and all articles and responses to questions and other content, other than the content provided by the LeEco, 
+               are solely the opinions and the responsibility of the person or entity providing those materials. These materials do not necessarily 
+               reflect the opinion of the LeEco, and may contain subject matter or language that is not appropriate for all ages, so viewer discretion 
+               is advised. While we do not review all content, we may review and remove content that we believe violates our policies or applicable law.  
+               We do not assume responsibility or liability to you or any other person for third-party services, Third Party Materials or third party web 
+               sites or applications, or for any other materials, products, or services of third parties. To the extent you choose to use or access any 
+               LeEco Services and Third Party Materials, you are responsible for your compliance with any applicable laws, including territory restrictions.\n\n
+               f.Limitations on the Services. LeEco Services and Third Party Materials that may be accessed, linked to or displayed in the LeEco Services 
+               are not available in all languages, countries or regions. Neither LeEco nor any of its content providers guarantees the availability, accuracy, 
+               completeness, reliability, or timeliness of stock information, location data or any other data displayed by any LeEco Services and such 
+               information should not be relied upon as accurate.  LeEco and its licensors reserve the right to change, suspend, remove, or disable 
+               access to any LeEco Services at any time with or without notice. LeEco may impose limits on the use of or access to certain LeEco Services,
+                for any reason and without notice or liability.\n\n
+                5.SOFTWARE LICENSE TERMS\n\n
+                The following software license terms apply to any software (including any updates or upgrades to the software and any related 
+                documentation) that we make available to you from time to time for your use in connection with LeEco Services.\n\n
+                a.General.  The software (including embedded software and third party software), documentation, interfaces, content, fonts and any 
+                data that came with your device or that is provided to you as part of LeEco Services, as applicable (the “Original LeEco Software”), 
+                as may be updated or replaced by feature enhancements, software updates or system restore software provided by 
+                LeEco (the “LeEco Software Updates”), whether in read-only memory, on any other media or in any other form (the Original LeEco 
+                Software and LeEco Software Updates are collectively referred to as the “LeEco Software”) are licensed, not sold, to you by or on 
+                behalf of LeEco for use only under the terms of these Terms of Service. LeEco and its licensors retain ownership of the LeEco Software 
+                and reserve all rights not expressly granted to you in this License. You agree that the terms of this License will apply to any LeEco 
+                Software, unless it is accompanied by a separate license, in which case you agree that the terms of that separate license will govern 
+                your use of that software or application.\n\n
+                LeEco, in its discretion, may make available future LeEco Software Updates for your device. 
+                The LeEco Software Updates, if any, may not necessarily include all existing software features 
+                or new features that LeEco releases for newer or other models. The terms of this License will govern any LeEco Software Updates 
+                provided by LeEco that replace and/or supplement the Original LeEco Software, unless such LeEco Software Update is accompanied by a 
+                separate license, in which case the terms of the separate license will govern.\n\n
+                b.Permitted License Uses and Restrictions. Subject to the terms and conditions of this License, you are granted a limited non-exclusive 
+                license to use the LeEco Software on a single device. Unless provided in a separate agreement between you and LeEco, this License does not allow the LeEco 
+                Software to exist on more than one device at a time, and you may not distribute or make the LeEco Software available over a network where 
+                it could be used by multiple devices at the same time. This License does not grant you any rights to use LeEco proprietary interfaces or other 
+                technology or intellectual property in the design, development, manufacture, licensing or distribution of third party devices or accessories, 
+                or third party software applications, including for use with any LeEco Service. \n\n
+                You may not, and you agree not to or permit or assist others to, copy (except as expressly permitted by this License), decompile, 
+                reverse engineer, disassemble, attempt to derive the source code of, decrypt, modify, or create derivative works of the LeEco Software 
+                or any services provided by the LeEco Software or any part thereof (except as and only to the extent these restrictions are prohibited by 
+                applicable law).\n\n
+                Automatic application updates may be available for the LeEco Software, and if you choose to allow automatic application updates, 
+                your LeEco Software will periodically check with LeEco for updates to the apps on your device and, if one is available, the update will 
+                automatically download and install onto your device. \n\n
+                c.Transfer.  You may not rent, lease, lend, sell, redistribute, or sublicense the LeEco Software. You may, however, make a one-time, 
+                permanent transfer of all of your license rights to the LeEco Software to another party in connection with the transfer of ownership 
+                of your associated LeEco device, provided that: (a) the transfer must include your LeEco device and all of the LeEco Software, including
+                 all its component parts, original media and this License; (b) you do not retain any copies of the LeEco Software, full or partial, including 
+                 copies stored on a computer or other storage device; and (c) the party receiving the LeEco Software reads and agrees to accept the 
+                 terms and conditions of this License.\n\n
+                 d.Export Control.  You must comply with all export and re-export restrictions and regulations of the Department of Commerce and other United States agencies and authorities that may apply to the LeEco Software. You also agree that you will not use the LeEco Software for any purposes prohibited by United States law.\n\n
+                 e.Government End Users.  The LeEco Software and related documentation are “Commercial Items,” as that term is defined at 48 C.F.R. §2.101, consisting of “Commercial Computer Software” and “Commercial Computer Software Documentation,” as such terms are used in 48 C.F.R. §12.212 or 48 C.F.R. §227.7202, as applicable. 
+                 Consistent with 48 C.F.R. §12.212 or 48 C.F.R. §227.7202-1 through 227.7202-4, as applicable, the Commercial Computer Software and Commercial Computer Software Documentation are being licensed to U.S. Government end users (a) only as Commercial Items and (b) with only those rights as are granted to all other end 
+                 users pursuant to these Terms of Service. Unpublished rights are reserved under the copyright laws of the United States.\n\n
+                 6.MOBILE DEVICES AND MOBILE DEVICE APP PERMISSIONS\n\n
+                 Some LeEco Services may be available on mobile devices.  Do not use these services in such a way that causes distraction and prevents you from observing and obeying traffic or other safety laws and regulations. When you use apps provided by us, you may grant certain permissions to us for your device. Most mobile devices 
+                 provide you with information about these permissions and how they can be changed or disabled.\n\n
+                 7.LEECO PRODUCT AND SERVICES INFORMATION\n\n
+                 The information presented on or through LeEco websites is made available solely for general information purposes. We do not warrant the accuracy, completeness or usefulness of this information. Any reliance you place on such information is strictly at your own risk. We disclaim all liability and responsibility arising from any reliance placed on such materials by you or any other visitor to an LeEco website, or by anyone who may be informed of any of its contents.\n\n
+                 8.PROPRIETARY RIGHTS\n\n
+                 a.Ownership. All information, content, materials, products (including software), text, graphics, logos, images, audio or visual clips, complications of content and other services included in or otherwise made available to you through the LeEco Services (collectively, the “LeEco Content”) are proprietary works owned by LeEco or its content providers and are protected by U.S. and international intellectual property laws.  All right, title and interest in and to the LeEco Content, including, but not limited to, all copyright, moral rights, patent, patent registration, service mark, service name, trade name, trade secret, trademark, or other proprietary right arising or enforceable under any United States federal or state law, rule or regulation, non-United States law, rule or regulation or international treaty, is the exclusive property of LeEco or its content providers.  All rights not expressly granted to you in these Terms of Service are reserved and retained by LeEco or its content providers.  Your use of LeEco Content, including, news, entertainment and other content offered by LeEco, is limited solely to your personal, noncommercial use, does not transfer any ownership interest to you in the LeEco Content, and specifically excludes, without limitation, any commercial or promotional use rights in the LeEco Content.  Except as otherwise expressly provided in an application, you may not republish, retransmit or reproduce any images accessed through any application.\n\n
+                 b.Trademark Use.  The name LeEco, LeTV, LeMall.com and all related names, logos, product and service names, designs and slogans, and website elements, designs and scripts are trademarks or trade dress of LeEco and its affiliated companies. LeEco’s trademarks and trade dress may not be used in connection with any product or service that is not ours, in a manner that is likely to cause confusion among customers, that dilutes its uniqueness, or that disparages or discredits us. All other names, logos, product and service names, designs and slogans accessible through LeEco are the property of their respective owners.\n\n
+                 c.User Content. To the extent that you upload any content through the use of the LeEco Services, you represent and warrant that you own all rights in, or have the legal right to upload, such content and that such content does not violate these Terms of Service or any other terms applicable to the LeEco Services and that the uploaded content is not obscene, illegal, threatening, infringing any copyright, trademark, right of publicity or other intellectual property right, defamatory, violative of privacy rights or otherwise objectionable.  LeEco is free to use any comments, information, ideas, concepts, reviews, or techniques or any other material contained in any communication you may send to us (“Feedback”), including responses to questionnaires or through postings to the LeEco Services, including the LeEco websites, applications and user interfaces, worldwide and in perpetuity without further compensation, acknowledgement or payment to you for any purpose whatsoever including, but not limited to, developing, manufacturing and marketing products and creating, modifying or improving the LeEco Services. In addition, you agree not to enforce any “moral rights” in and to the Feedback, to the extent permitted by applicable law. \n\n
+                 9.COPYRIGHT INFRINGEMENT AND DMCA\n\n
+                 If you are a copyright owner or an agent thereof and believe that any content, information, or communication on the LeEco Services, including any content posted by a user, infringes upon your copyrights, you may submit a written notice of infringement pursuant to the Digital Millennium Copyright Act, 17 U.S.C. § 512 (the “DMCA”). \n\n
+                 All notices of infringement should be sent to the Designated Agent of LeEco identified below and should include the following information: \n\n
+                 (a) an electronic or physical signature of the copyright owner or of the person authorized to act on behalf of the owner of the copyright interest,\n
+                 (b) a description of the copyrighted work that you claim has been infringed, \n
+                 (c) a description of where the material that you claim is infringing is located on the Site, \n
+                 (d) your address, telephone number, and e-mail address, \n
+                 (e) a written statement by you that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law, and\n
+                 (f) a statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner’s behalf.\n
+                 For the fastest processing of your request, written notice should be sent to our designated agent via our online copyright complaint form at www.leeco.com/dmca. \n\n
+                 Alternatively, notices of infringement should be directed to the following Designated Agent of LeEco:\n
+                 LeEco\n
+                 Attn. Legal Director - IP\n
+                 3553 N. 1st Street\n
+                 San Jose, CA 95134\n\n
+                 If you submit a notice of infringement that knowingly materially misrepresents that any LeEco Content, information, or communication on the LeEco Services is infringing upon a copyright, you may be held liable for damages and attorneys’ fees. If you believe that your content, information, or communication has been removed from the LeEco Services due to an erroneous claim of infringement, you may have remedies available to you under the DMCA.\n\n
+                 It is the policy of the LeEco to terminate the user accounts of repeat infringers.\n\n
+                  10.THIRD PARTY TERMS. \n\n
+                  Portions of the LeEco Services may utilize or include third party software and other copyrighted material. Your use of third party material is governed by the respective terms of those third parties. \n\n
+                  11.DISCLAIMER OF WARRANTIES AND LIMITATION OF LIABILITY\n\n
+                  TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE LEECO SERVICES AND ALL INFORMATION, CONTENT, MATERIALS, PRODUCTS (INCLUDING SOFTWARE) AND OTHER SERVICES INCLUDED ON OR OTHERWISE MADE AVAILABLE TO YOU THROUGH THE LEECO SERVICES ARE PROVIDED “AS IS” AND “AS AVAILABLE”, WITH ALL FAULTS AND WITHOUT WARRANTY, GUARANTY OR CONDITION OF ANY KIND, AND LEECO AND LEECO’S LICENSORS HEREBY DISCLAIM ALL WARRANTIES, GUARANTEES AND CONDITIONS WITH RESPECT TO THE LEECO SERVICES OR INFORMATION, CONTENT, MATERIALS, PRODUCTS (INCLUDING SOFTWARE) AND OTHER SERVICES INCLUDED ON OR OTHERWISE MADE AVAILABLE TO YOU THROUGH THE LEECO SERVICES, EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES, GUARANTEES AND/OR CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, OR NON-INFRINGEMENT OF THIRD PARTY RIGHTS. LEECO AND LEECO’S LICENSORS DO NOT WARRANT THAT THE OPERATION OF THE LEECO SERVICES WILL BE UNINTERRUPTED OR ERROR-FREE, THAT ANY LEECO SERVICE WILL CONTINUE TO BE MADE AVAILABLE, THAT DEFECTS IN THE LEECO SERVICES WILL BE CORRECTED, OR THAT THE LEECO SERVICES WILL BE COMPATIBLE OR WORK WITH ANY THIRD PARTY SOFTWARE, APPLICATIONS OR THIRD PARTY SERVICES. INSTALLATION OF SOFTWARE CONTAINED IN THE LEECO SERVICES MAY AFFECT THE AVAILABILITY AND USABILITY OF THIRD PARTY SOFTWARE, APPLICATIONS OR THIRD PARTY SERVICES, AS WELL AS LEECO SERVICES.\n\n
+                  LEECO DOES NOT ASSUME ANY LIABILITY FOR PURCHASES, PAYMENTS, TRANSACTIONS, OR OTHER ACTIVITY USING PAYMENT FEATURES OF THE LEECO SERVICES, AND YOU AGREE TO LOOK SOLELY TO AGREEMENTS YOU MAY HAVE WITH YOUR ISSUING BANK, PAYMENT NETWORK, OR MERCHANT TO RESOLVE ANY QUESTIONS OR DISPUTES RELATING TO YOUR SUPPORTED CARDS, VIRTUAL SUPPORTED CARDS AND ASSOCIATED COMMERCE ACTIVITY.\n\n
+                  TO THE EXTENT NOT PROHIBITED BY APPLICABLE LAW, IN NO EVENT WILL LEECO, ITS AFFILIATES OR LICENSORS, OR THEIR RESPECTIVE EMPLOYEES, AGENTS OR PRINCIPALS BE LIABLE FOR PERSONAL INJURY, OR ANY INCIDENTAL, SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES WHATSOEVER, INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF PROFITS, CORRUPTION OR LOSS OF DATA, FAILURE TO TRANSMIT OR RECEIVE ANY DATA, BUSINESS INTERRUPTION OR ANY OTHER COMMERCIAL DAMAGES OR LOSSES, ARISING OUT OF OR RELATED TO YOUR USE OR INABILITY TO USE THE LEECO SERVICES OR ANY THIRD PARTY SOFTWARE OR APPLICATIONS IN CONJUNCTION WITH THE LEECO SERVICES, HOWEVER CAUSED, REGARDLESS OF THE THEORY OF LIABILITY (CONTRACT, TORT OR OTHERWISE), EVEN IF LEECO HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY FOR PERSONAL INJURY, OR OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THIS LIMITATION MAY NOT APPLY TO YOU. NOTWITHSTANDING THE FOREGOING, IN NO EVENT WILL LEECO’S TOTAL LIABILITY TO YOU FOR ALL DAMAGES (OTHER THAN AS MAY BE REQUIRED BY APPLICABLE LAW IN CASES INVOLVING PERSONAL INJURY) EXCEED THE AMOUNT OF TWO HUNDRED AND FIFTY DOLLARS (U.S. $250.00). THESE LIMITATIONS ARE INTENDED TO APPLY EVEN IF THE FOREGOING REMEDY IS FOUND TO HAVE FAILED OF ITS ESSENTIAL PURPOSE.\n\n
+                  IF ANY PROVISION OF THESE TERMS OF SERVICE IS HELD TO BE INVALID, ILLEGAL, OR UNENFORCEABLE, THE VALIDITY, LEGALITY AND ENFORCEABILITY OF THE REMAINING PROVISIONS WILL REMAIN IN FULL FORCE AND EFFECT.\n\n
+                  CERTAIN STATE LAWS DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES OR THE LIMITATION OR EXCLUSION OF CERTAIN KINDS OF DAMAGES. IF THESE LAWS APPLY TO YOU, SOME OR ALL OF THE ABOVE DISCLAIMERS, LIMITATIONS OR EXCLUSIONS MAY NOT APPLY TO YOU, AND YOU MIGHT HAVE ADDITIONAL RIGHTS.\n\n
+                  12.GOVERNING LAW AND JURISDICTION\n\n      
+                  You agree that Federal Arbitration Act, applicable United States federal law, and the laws of the State of California, without regard to principles of conflict of laws, will govern these Terms of Service and any dispute or claim arising between you and LeEco.  The United Nations Convention on Contracts for the International Sale of Goods will not apply to these Terms and Conditions.\n\n
+                  13.ADDITIONAL TERMS\n\n
+                  We reserve the right to make changes to the terms of our applicable privacy and other policies, these Terms of Service, and other applicable terms of use at any time. If any applicable terms shall be deemed invalid, void, or for any reason unenforceable, such term shall be deemed severable and shall not affect the validity and enforceability of any remaining terms.\n\n
+                  14.ARBITRATION AGREEMENT AND CLASS ACTION WAIVER\n\n
+                  If you are a user of the LeEco Services in the United States (including its possessions and territories), you agree that exclusive jurisdiction for any dispute, claim, or demand related in any way to the Contest will be decided by binding arbitration. All disputes between you and LeEco, of whatsoever kind or nature arising out of these Terms of Service, shall be submitted to JAMS, Inc. (“JAMS”) for binding arbitration under its rules then-in-effect in the San Jose, California, USA area, before one arbitrator to be mutually agreed upon by both parties.  Notwithstanding the foregoing, you have the right to an in-person hearing in your hometown area. This agreement to arbitrate is intended to be broadly interpreted and includes, but is not limited to any dispute, claim or controversy arising out of or relating in any way to these Terms of Service or your use of the LeEco Services.  The U.S. Federal Arbitration Act will govern the interpretation and enforcement of this provision, and you and LeEco each waive the right to a trial by jury or to participate in a class action.  Notwithstanding the foregoing, either party may bring an individual action in small claims court. This arbitration provision does not preclude the user from bringing issues to the attention of federal, state, or local agencies. Such agencies can, if the law allows, seek relief against LeEco on your behalf. \n\n
+                  Except as otherwise provided herein, or unless LeEco and you agree otherwise, any arbitration hearings will take place by video or telephone conference.  For the avoidance of doubt, the arbitration shall allow for the discovery or exchange of non-privileged information relevant to the dispute.  Regardless of the manner in which the arbitration is conducted, any Arbitrator’s Award will consist of a written statement stating the disposition of each claim, and the arbitrator shall issue a reasoned written statement of the essential findings and conclusions on which the award is based.  The arbitrator is not authorized to award punitive or other damages not measured by the prevailing party’s actual damages, and may not, in any event, make any ruling, finding or award that does not conform to the terms and conditions of these Terms of Service. \n\n
+                  Except as expressly set forth herein, the payment of all filing, administration and arbitrator fees will be governed by the JAMS’ rules, and if you initiate the arbitration, you shall only be responsible for fees up to US $250.00.  All other costs will be borne by LeEco, including any remaining JAMS Case Management Fee and all professional fees for the arbitrator’s services.  If LeEco initiates the arbitration, LeEco shall pay all fees associated with the arbitration. \n\n
+                  YOU AND LEECO AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR LEECO’S INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING. Further, unless both you and LeEco agree otherwise, the arbitrator may not consolidate more than one person’s claims with your claims, and may not otherwise preside over any form of a representative or class proceeding. If this specific provision is found to be unenforceable, then the entirety of this arbitration provision shall be null and void. The arbitrator may award declaratory or injunctive relief only in favor of the individual party seeking relief and only to the extent necessary to provide relief warranted by that party’s individual claim.\n\n
+                  Notwithstanding the foregoing, the parties acknowledge and agree that any violation of LeEco’s proprietary rights in the LeEco Services or LeEco Software by you would cause irreparable harm and significant injury, the degree of which may be difficult to ascertain. Accordingly, each party agrees that in the event of your violation of LeEco’s proprietary rights in the LeEco Services or LeEco Software as provided in these Terms of Service, LeEco shall not be required to submit such claims to arbitration, and LeEco shall have the right to seek an immediate injunction from any court of competent jurisdiction enjoining any such violation of LeEco’s proprietary rights in the LeEco Services or LeEco Software. \n\n
 </string>
-    <string name="tos_service_2">乐视隐私保护协议</string>
-    <string name="tos_content_2">        乐视体育文化发展（北京）有限公司（以下简称乐视）尊重并保护所有使用乐视平台享受各项互联网服务用户的隐私权，
-        乐视会按照本声明的规定使用和披露用户的个人隐私及非个人隐私。乐视将以高度的勤勉、审慎义务对待这些信息，
-        除本声明另有规定外，在未征得用户事先许可的情况下，在任何情况下均不会将这些信息对外披露或向第三方提供。
-        如用户不同意本声明，可以主动拒绝、取消乐视提供的服务；用户一旦使用乐视服务（包括但不限于用户对乐视所有服务内容、
-        软件、客户端的下载、安装、使用、浏览、帐号获取和登录等行为），即视为用户已了解并完全同意本声明各项内容，
-        包括对本声明随时所做的任何修改。
-
-\n\n1 乐视如何使用您的个人数据？\n\n
-
-1.1 乐视收集及使用个人数据的方式、时机与目的\n\n
-
-建立帐户、购买、注册产品或服务\n
-如果您在线提交申请建立帐户、购买、注册我们的产品或服务等，我们可能会要求您提交完成该要求所需的数据，例如您的电子邮件地址、
-        收货人地址、电话号码、产品信息、购买时间以及支付方式等，以便我们完成您订单的处理、下载产品、获得服务与技术支持以及升级等。\n\n
-
-参加促销活动或市场调查\n
-在取得您的同意后，我们可能会要求您提交必要信息，例如您的联系信息、移动电话号码、电子邮件地址等，以便能联系您、
-        提供您可能感兴趣的产品和服务信息、参加我们的促销活动或市场调查等。您可以通过在网站、
-        提示窗口或我们的产品上拒绝、关闭这类选项，来拒绝乐视使用您的个人数据进行促销活动或市场调查。\n\n
-
-将内容分享给您的朋友，或邀请朋友加入\n
-如果您使用我们的服务，将内容分享给您的朋友或邀请朋友加入，我们可能需要您提供朋友的联系信息，
-        包括但不限于任何社交网络帐户、电子邮件地址等。乐视可能使用您所提供的信息，通过电子邮件、即时消息工具、
-        社交网站或文字/多媒体信息等方式，将邀请信息传送给您的朋友，该信息只会用于将邀请寄给您的朋友，乐视不会储存该等信息，
-        也不会在任何其他情况下，使用这些信息侵犯您的朋友隐私。\n\n
-
-升级服务\n
-乐视可能收集您终端产品的系统和应用程序信息，这是为了及时通知您有可用的系统和应用程序更新。因为此目的收集的信息包括设备名称、
-        系统和应用程序版本、操作系统和浏览器版本、地区和语言设置、设备识别信息 (IMEI、ESN、MEID、SN)、运营商网络编码等。
-        乐视对以上信息的处理仅限于通知您有应用程序更新可用。\n\n
-
-数据统计\n
-乐视可能会收集某些信息进行统计与分析，这类信息可包括您的设备名称、设备版本、设备识别号码 (IMEI、ESN、MEID、SN)、
-        设备的粗略地理位置信息 (例如设备所在的网络位置编码)、运营商网络ID (PLMN)、应用使用情况、您访问互联网的IP地址。
-        乐视收集并处理这类信息的目的是：提供您最佳的人性化用户经验、提供个性化内容、改善我们的产品、分析我们的运营效率、
-        统计市场占有率、改善网络和服务的安全性，以及启用您的售后保障服务。\n\n
-
-故障定位\n
-当您的设备或应用程序发生异常情况，且您选择将相关信息发送给乐视，让乐视或其合作方提供故障分析服务时，
-        乐视可能会收集相关信息，包括设备型号、应用程序的名称和版本、设备识别号码、错误日志等。\n\n
-
-数据同步、分享和储存\n
-乐视提供的某些服务允许您同步、分享和储存数据，乐视将会收集并储存您选择要上传、下载或实现这类功能的数据。\n\n
-
-1.2 以位置为基础的服务\n
-当您要求使用某些以地理位置信息为基础的服务时，例如，当您根据特定地理位置搜索、导航、查询天气时，乐视可能会收集、
-        使用及处理您设备的精准或粗略地理位置数据，以便乐视向您提供上述服务，收集的信息可包括您设备的ID、类型和型号，
-        以及您设备的实时地理位置信息 (包括全球定位系统信息「GPS」、WLAN 或运营商网络编码)。您可以通过GPS设置，
-        开启或关闭GPS信息，但是根据运营商的政策，您可能无权控制WLAN和选择移动运营商网络。乐视采用匿名方式收集地理位置信息，
-        以提供并改善以位置为基础的产品和服务。\n\n
-
-1.3 非个人信息的收集及使用\n
-「非个人信息」是指无法识别特定个人身份的信息，例如我们网站的浏览人数、网页的点击次数、视频的播放数、内容的下载量等等。
-        乐视会收集这类信息，以了解您如何使用我们的网站、产品或服务，如此乐视才能进行改善，以满足您的需求。
-        乐视可以自行决定是否基于任何其他目的，收集、使用、移转或披露非个人信息。\n\n
-
-1.4 用户体验计划\n
-您同意加入乐视的“用户体验计划”，当您同意加入乐视的“用户体验计划”时，我们会根据需要匿名统计您对手机的各项功能的使用情况，
-        通过您使用手机各功能、应用或服务的使用习惯信息去制定优化策略，提升您的使用体验。除此之外，当系统发生非正常的退出或崩溃时，
-        我们也会收集用于诊断问题的手机当前的环境信息。您已知悉因此可能会产生一定的数据流量。\n\n
-
-2 Cookie政策\n
-为确保我们的网站正常运作，有时我们会在您的计算机或移动设备上放置小型数据文件，这类档案称为Cookie。Cookie是一种简易文本文件，由网站的服务器储存在您的计算机或移动设备上，且只有该服务器能检索到或读取该Cookie的内容。对于浏览器而言，每一个Cookie都是独一无二的。它包含某些匿名信息，例如唯一标识符、网站名称和一些数字和号码。它可以让网站记住诸如您的喜好或购物车内容等信息。
-大部分的大型网站或互联网服务提供商都会在您访问期间 (使用「会话 Cookie」) 或再次访问 (使用「永续性 Cookie」) 时，启用该网站「记住」您的功能，以改善用户体验。Cookie能协助网站记住您的设定，您在计算机或移动设备上浏览网站时所使用的语言、字号及其他喜好，每次返回网站时，就不需要再次输入这些设定。如果某个网站未使用Cookie，每当您移至该网站的新网页时，就会将您视为新访问者，例如，当您输入详细数据并移至另一个网页时，该网页将无法辨识您的身份，也无法让您保持登录状态。
-我们的Cookie不会用于识别您的个人身份，仅用于让您在访问时网站运作得更好和更方便。\n\n
-
-3 乐视如何披露您的个人数据\n
-只有符合下列情况时，乐视才会披露您的个人数据。在下列情形之外，乐视绝不会将您的个人数据披露给第三方\n
-(1) 您已明确同意：\n
-        在得到您的批准后，乐视才会将您的个人数据透露给其他公司；\n
-(2) 将您的个人数据披露给其他乐视分公司或授权合作的第三方：\n
-乐视可能需要通过某些合作方为您提供某些服务，因此乐视需要将您的部分个人数据共享给合作方，以便丰富我们的服务以及满足您的需求。
-        例如，当您决定在线购买乐视产品时，乐视将需要将您的个人数据提交给相关物流厂商，如此这些厂商才能将产品送达给您，
-        或是允许我们的合作方提供其他客户服务给您。乐视严格禁止乐视分公司或授权第三方，将共享的信息用于其他目的。\n
-(3) 依法律要求，披露您的个人信息：\n
-依法律、诉讼、司法机关或政府机关的要求，乐视可能会提供您的个人信息。在乐视涉及重组、合并或清算的情况下，您的个人数据可能也会提供给交易方。\n\n
-
-4 如何更新、变更或检查您的个人数据\n
-您应该对所提交的个人信息的准确性负责，乐视将尽到商业上合理的努力，确保您个人信息的准确性，乐视会根据您的要求，删除或修改信息。
-        您可以拨打电话到客服热线10109000与我们联络并提出您的要求。依据乐视的条款与协议，您可以随时管理您的个人信息，
-        例如您的个人帐户注册信息。\n\n
-
-        5 乐视如何保护您的个人数据\n
-乐视采取合理的预防措施，包括但不限于物理上、技术及制度等方面，以保护您的个人信息不会遭受未经授权的浏览、披露、
-        滥用、变更、破坏以及损失。例如，在技术方面，乐视使用防病毒软件、加密保护、监控我们的系统，以及增强我们数据中心的攻击防护；
-        物理方面，乐视设定门禁措施及访问控制，仅允许需要这类信息的业务人员浏览；在制度方面，则透过对乐视员工进行安全与隐私保护知识培训，
-        确保员工了解保护数据的重要性。虽然我们采用合理的措施来保护您的个人数据，但没有任何安全措施能够百分之百完美或牢不可破。\n\n
-
-6 乐视如何处理未成年人的个人数据\n
-如果法律有相关规定，乐视不会在未征得监护人同意的前提下收集未成年人的个人数据。我们只会在法律允许的范围内，或依当地法律取得监护人的同意，
-        或是为保护未成年人而使用或披露有关未成年人的个人数据。「未成年人」的定义应考虑适用的法律，以及各国家和地区的文化惯例。\n\n
-
-7 第三方服务提供商\n
-为方便您的访问并丰富您的体验，可能会有非乐视的第三方提供内容或因特网链接。您可以选择是否访问这类链接或内容，
-        是否使用这类第三方的服务或产品，但乐视对于这些并没有控制权。乐视无法控制第三方的任何隐私权和数据保护措施，
-        这类措施不受本政策管理，本政策也不适用于您自行选择提供给第三方的任何信息，请您查看第三方的隐私保护政策。\n\n
-
-8 数据传输\n
-乐视产品与服务可能会由位于世界不同国家或地区的资源与服务器提供。因此，您的个人信息可能会跨国界而传输到您使用我们服务所在国家或地区
-        之外的国家和地区，那些国家或地区可能没有对个人数据提供具体保护的法律，或是实行不同的数据保护法。在这类情况下，
-        乐视将采取措施，确保有法律基础可进行这类传输，以及依适用法律，会对您个人数据提供适当的保护。例如，
-        通过使用相关授权单位核准的标准合约 (必要时)，以及通过使用其他适当的技术与组织信息安全措施。\n\n
-
-9 修订\n
-乐视有权根据实际需要经事先通知后修改本声明，声明修改后将会在网站相关页面上发布。\n
+    <string name="tos_content_2"> Le Technology, Inc. and its Affiliates, which are referred to collectively as “LeEco”, “we” or “us” in this Privacy Policy, know that you care how information about you is used.  For the purposes of this Privacy Policy, “Affiliate” means the group of entities which are controlling, controlled by or under common control with Le Technology, Inc., and “control” means possessing, directly or indirectly, the power to direct or cause the direction of the management, policies or operations of an entity, whether through ownership of voting securities, by contract or otherwise. This Privacy Policy is meant to help you understand what information is collected and how that information is used when you visit our websites or use our products and services, including mobile phones, televisions, TV Boxes, accessories, websites, and software, including mobile applications (“LeEco Services”).  Some LeEco Services shall provide and be subject to a different privacy policy than the terms set forth in this Privacy Policy, and in such event, the terms of the applicable LeEco Service privacy shall supersede this Privacy Policy.\n\n
+        By visiting our websites or using the LeEco Services, you are accepting the practices described in this Privacy Policy, including the arbitration agreement and class action waiver described below. \n\n
+        This Privacy Policy applies to you if (1) you are located in the United States and use any LeEco Service or (2) if you are located anywhere in the world and visit our websites including leeco.com or any of our other websites or LeEco Services based in or hosted from the United States. If you are located outside of the United States and have purchased, visited, or used any LeEco Service, you should consult the applicable LeEco Services Privacy Policy for your territory for other terms that may apply to you with respect to LeEco Services you receive outside the United States.  Before using and submitting information through the LeEco Services, please read this Privacy Policy. By visiting or using the LeEco Services, you acknowledge that you accept the practices and policies identified in this Privacy Policy and consent to having your personal and non-personal information transferred to and/or processed as described in this Privacy Policy. If you do not agree to this Privacy Policy, please do not use the LeEco Services.\n\n
+       1. Information We Collect\n\n
+       We collect information to personalize your experience of the LeEco Services and to provide and improve our service sand products.\n\n
+       The following are the types of information we collect:\n
+       Information that you provide to LeEco.  We collect information you enter in your use of LeEco Services or give us, our affiliates or business partners.  For example, when you create an account sign up for a subscription or purchase a product from LeEco, we will ask you for personal information such as your name, birthdate, address, phone number, email address or credit card to store with your account. \n
+       Information we obtain from your use of LeEco Services.  We collect information about how you use the LeEco Services, like when you visit our websites, use our software, or interact with our devices. This information includes: \n
+       Device and user activity.  We may collect information including:\n
+       device information such as device identifiers, hardware capabilities, and network information including phone number\n
+       details of how your used our services, such as content queries\n
+       Internet protocol (IP) addresses\n
+       devices events such as crash events, log files, hardware settings, and source and referral URLs. \n
+       Location-based data.  When you use the LeEco Services, we may receive information about your location, for example, using information about your computer, product or mobile device, including GPS, WiFi, IP address or other unique identifiers. This location data may be used by LeEco and our partners to provide and improve location-based products and services, such as advertising and other personalized content. \n
+       Cookies. “Cookies” are small files sent to your computer when you visit a website. They can store information like user preferences and other information. When you use a LeEco Service, we may use a cookie, web beacons, or other similar technology to record information about how you use the LeEco Service, such as geographic and language preferences, the effectiveness of ads, or the content query that directed you to a particular page. We may use cookies in conjunction with advertising to provide you with personalized content. Most browsers allow you to delete cookies and not accept new ones. However, disabling them may prevent you from using certain LeEco features or functionality. \n\
+       Video data. When you activated your use of video within the LeEco Services, you consented to our collection of information regarding the videos accessed.  If you wish to withdraw your consent, please disable use of the video-related LeEco services through your device’s system settings. However, some of the LeEco Services may not function correctly if the video-related LeEco services are disabled.\n\n
+       2.How We Use Information We Collect\n\n
+       We use the information we collect to to allow us to efficiently process your transactions, to provide, maintain, protect, improve, LeEco Services, and to develop new services and products. We may use personal and non-personal information across LeEco Services you use. We may use this information to personalize the LeEco Services, and to help us deliver personalized services and advertising of interest to you.\n\n
+       For example, we may use your personal information to send you communications, to personalize your LeEco Services, to make sharing of information and content easier for you (such as content uploaded through social media), to verify your age or identity, for security, error reporting, service restriction, loss prevention, and anti-fraud purposes, and to help us to create, to develop, to operate, to deliver and to improve our products, services, content and advertising. We may also use personal information for internal purposes such as auditing, analysis of your online activities over time, and research to improve the LeEco Services and customer communications.\n\n
+       We also collect information in a form that does not, on its own, permit direct association with any specific individual, including de-identified or aggregated information collected regarding customer activities on the LeEco Services. We may collect, use, transfer, store and disclose this non-personal information for any purpose. We treat information collected by cookies as non-personal information as long as it can’t be used to identify a particular individual.  If we combine non-personal information with personal information, the combined information will be treated as personal information under this Privacy Policy. \n\n
+       3.Disclosures to Third Parties\n\n
+       At times, LeEco may make certain personal information available to affiliates, partners, or venders that work with LeEco to provide products and services, process payments, analyze data, provide customer service, and help LeEco market to customers. These companies may be located anywhere in the world, including outside of your country of residence.\n\n
+       We also may work with partners to help us deliver LeEco ads to you on third-party websites, applications or devices. We may share information we collect from you with these partners. To deliver these ads, our partners may collect information about you, your devices, and your use of LeEco Services. This information may include visits to websites and use of applications provided by LeEco and others, your IP address, your Internet service provider, and the browser that you use to visit our websites.\n\n
+       It may be necessary − by law, legal process, litigation, and/or requests from international, national, federal, state, public and governmental authorities within or outside your country of residence − for LeEco to disclose your personal information or other information. We may also disclose your personal information if we determine that for purposes of national security, public safety, law enforcement, or other issues of public importance, disclosure is necessary or appropriate.\n\n
+       We may also disclose information about you if we determine that disclosure is reasonably necessary to enforce our terms and conditions or to protect us, our products and services, our partners, operations or users. Additionally, in the event of a reorganization, stock sale, merger, sale or divestiture of all or any part of our business, operations or assets, change of control, or a financing or bankruptcy or liquidation, we may transfer or disclose information, including personal information, to a third party in connection with those events.\n\n
+       4.Children’s Privacy\n\n
+       We do not knowingly intend to collect personal information from children under 14 years of age. If a child has provided us with personally identifiable information, a parent or guardian of that child may send an email message to Privacy-US@le.com with “Request for Child Information Removal” on the subject line and the name and age of the child in the body of the message.  We will then make reasonable efforts to delete the child’s information from the database that stores information for the applicable LeEco Services.\n\n
+       5.Protection of Personal Information\n\n
+       We care about the security of your information and take steps to safeguard and help prevent unauthorized access to your personal information. If you become aware of any technical vulnerability affecting LeEco Services or have any concerns, please email Privacy-US@le.com. \n\n
+       6.Retention of Personal Information\n\n
+       We will retain your personal information for the period necessary to fulfill the purposes outlined in this Privacy Policy unless a longer retention period is required by law or for business-related reasons. We may retain non-personal information indefinitely, including following termination or suspension of your LeEco accounts, memberships or subscriptions. We will take commercially reasonable steps to erase or destroy any Personal information stored on any LeEco devices you return to us in accordance with industry standards, but we cannot guarantee that all such personal information will be completely removed from returned devices. Accordingly, you should take care to ensure all personal information is permanently removed from your LeEco devices prior to returning devices to us. \n\n
+       7.Integrity and Access to Personal Information\n\n
+       You can help ensure that your contact information and preferences are accurate, complete, and up to date by logging in to your LeEco account.  You may also request access to your other personal information held by LeEco, such as to request that we correct the data if it is inaccurate or delete the data if LeEco is not required to retain it by law or permitted to retain it for legitimate business purposes. We may decline to process requests that are frivolous/vexatious, jeopardize the privacy of others, are extremely impractical, or for which access is not otherwise required by local law. Access, correction, or deletion requests can be made by contacting us at Privacy-US@le.com. \n\n
+       8.Third—Party Sites and Services\n\n
+       LeEco Services may contain advertisements for and links to third-party websites, applications, products, and services, including through “plug-ins,” widgets, buttons, and other third party features or integrations made available on and connected with LeEco Services. Our products and services may also use or offer products or services from third parties − for example, content and applications. Information collected by third parties, location data and contact details, is governed by the privacy practices of those third parties. LeEco is not responsible for the privacy practices or the content of those third-party websites, applications, products or services and this Privacy Policy does not govern the use or disclosure of any information you choose to disclose to third parties. \n\n
+       9.International Transfer and Access; Users From Outside the United States\n\n
+       All information you provide may be transferred or accessed by entities around the world as described in this Privacy Policy. Information that we collect may be stored on your device or stored on our servers and transferred to, stored and processed in the United States or any other country where LeEco or its service providers maintain facilities, including jurisdictions that may not have data privacy laws that provide protections equivalent to those provided in your home country. By using the LeEco Services, you consent to your information being transferred to our facilities and to the facilities of those third parties with whom we share it as described in this Privacy Policy.\n\n
+       10.Privacy Questions\n\n
+       If you have any questions or concerns about this Privacy Policy or LeEco’s collection, use, disclosure, transfer or storage of your information, or if you would like to notify us about a possible breach of security or local privacy laws, please contact us at Privacy-US@le.com.  \n\n
+       LeEco may update this Privacy Policy from time to time. We will post notice of modifications to these terms on this page. You should look at these terms regularly. Changes will not apply retroactively and will become effective no sooner than fourteen (14) days after they are posted. Your continued use of applicable websites and LeEco Services after the posting of changes constitutes your acceptance of those updates. \n\n
+       11.Arbitration Agreement and Class Action Waiver  \n\n
+       If you are a visitor of our websites or user of the LeEco Services and subject to this Privacy Policy, you agree that all disputes and claims between you and LeEco will be settled by binding arbitration instead of in courts of general jurisdiction as provided in our Terms of Service located at www.leeco.com/generalTerms.\n\n
+       12.Applicable Law and Venue\n\n
+       By using any LeEco Service, you agree that the Federal Arbitration Act, applicable federal law, and the laws of the state of California, without regard to principles of conflict of laws, will govern this Privacy Policy and any dispute of any kind that might arise between you and LeEco. In the event that this Section 12 is severed in any legal action, then the parties agree that any legal relief sought will be brought in the federal or state courts serving Santa Clara County, California.\n\n
+       13.Survival\n\n
+       If any provision or provisions of this Privacy Policy are held to be invalid, illegal, or unenforceable, the validity, legality and enforceability of the remaining provisions will remain in full force and effect.\n\n
 </string>
+
+    <!-- 关于 -->
+    <string name="about_sys_version">System version</string>
+    <string name="about_model">Model number</string>
+    <string name="about_mac">Wi-Fi Mac address</string>
+    <string name="about_ip">IP address</string>
+    <string name="about_imei">IMEI</string>
+    <string name="about_version_2">Build number</string>
+
+    <!-- 电量 -->
+    <string name="battery_less_than_15">Less than 15% of electricity</string>
+    <string name="battery_less_than_5">Less than 5% of electricity</string>
+    <string name="battery_to_power_off">Power depletion, is about to shut down</string>
+    <string name="battery_unlock">Unlock</string>
 
 </resources>

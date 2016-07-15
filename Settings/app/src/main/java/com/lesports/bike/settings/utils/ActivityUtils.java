@@ -1,6 +1,7 @@
 package com.lesports.bike.settings.utils;
 
 import android.app.ActivityManager;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,11 +35,16 @@ public class ActivityUtils {
         context.startActivity(intent);
     }
 
-    public static void startActivity(Context context, Class activityClass, Bundle bundle) {
-        Intent intent = new Intent(context, activityClass);
+    public static void startFragmentActivityForResult(Fragment fragment, Class fragmentClass, int requestCode) {
+        startFragmentActivityForResult(fragment, fragmentClass, requestCode, null);
+    }
+
+    public static void startFragmentActivityForResult(Fragment fragment, Class fragmentClass, int requestCode, Bundle bundle) {
+        Intent intent = new Intent(fragment.getActivity(), DetailActivity.class);
+        intent.putExtra(BaseFragment.FRAGMENT_CLASS, fragmentClass);
         if (bundle != null) {
             intent.putExtras(bundle);
         }
-        context.startActivity(intent);
+        fragment.startActivityForResult(intent, requestCode);
     }
 }

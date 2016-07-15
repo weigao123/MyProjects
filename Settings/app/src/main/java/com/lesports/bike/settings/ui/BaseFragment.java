@@ -1,3 +1,4 @@
+
 package com.lesports.bike.settings.ui;
 
 import android.app.Fragment;
@@ -7,13 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lesports.bike.settings.R;
 import com.lesports.bike.settings.utils.ActivityUtils;
-import com.lesports.bike.settings.utils.DensityUtils;
 import com.lesports.bike.settings.widget.TitleBar;
 
 /**
@@ -23,7 +21,10 @@ public abstract class BaseFragment extends Fragment {
     public static final String FRAGMENT_CLASS = "fragment_class";
 
     protected abstract void initViewAndData();
-    protected abstract View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
+
+    protected abstract View createView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState);
+
     protected abstract String getTitleName();
     protected FrameLayout mFrameLayout2;
 
@@ -33,7 +34,8 @@ public abstract class BaseFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
         return createView(inflater, container, savedInstanceState);
     }
 
@@ -48,29 +50,23 @@ public abstract class BaseFragment extends Fragment {
             leftImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!ActivityUtils.isSingleActivity(getActivity())) {
-                        getActivity().finish();
-                    }
+                    getActivity().finish();
                 }
             });
-            if (getResources().getString(R.string.setting).equals(getTitleName())) {
-                leftImageView.setImageResource(R.drawable.menu);
-                titleBar.setPadding(DensityUtils.dp2px(getActivity(), 12), 0,
-                                                   DensityUtils.dp2px(getActivity(), 12), 0);
-            }
+//            if (getResources().getString(R.string.setting).equals(getTitleName())) {
+//                leftImageView.setImageResource(R.drawable.menu);
+//                titleBar.setPadding(SizeUtils.dp2px(getActivity(), 12), 0,
+//                        SizeUtils.dp2px(getActivity(), 12), 0);
+//            }
             titleView.setText(getTitleName());
         }
         mFrameLayout2 = (FrameLayout) getActivity().findViewById(R.id.fragmentContent2);
         initViewAndData();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
+    public void exit() {
+        if (!ActivityUtils.isSingleActivity(getActivity())) {
+            getActivity().finish();
+        }
     }
 }

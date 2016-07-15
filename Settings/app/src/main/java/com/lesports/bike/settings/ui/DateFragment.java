@@ -72,6 +72,13 @@ public class DateFragment extends BaseFragment implements View.OnClickListener {
         DateTimeUtils.set24HourFormat(getActivity());
         setAutoDateTimeEnable(isAutoDateTimeEnable(getActivity()));
         setAutoTimezoneEnable(isAutoTimezoneEnable(getActivity()));
+        if (!isAutoDateTimeEnable(getActivity())) {
+           dateText.setText(DateTimeUtils.getCorrentDate(getActivity()));
+           timeText.setText(DateTimeUtils.getCorrentTime());
+        }
+        if (!isAutoTimezoneEnable(getActivity())) {
+            timezoneText.setText(DateTimeUtils.getCorrentTimezone());
+         }
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.lesports.bike.settings.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,46 +19,49 @@ import com.lesports.bike.settings.utils.ActivityUtils;
  */
 public class MainFragment extends BaseFragment implements AdapterView.OnItemClickListener {
     public static final Integer[] mItemsText = new Integer[] {
-        R.string.audio_profiles,
-        R.string.wifi,
-        R.string.data_usage,
-        R.string.bluetooth,
-        R.string.sensor,
-        R.string.ptt,
-        R.string.display,
-        R.string.light,
-        R.string.security_and_password,
-        R.string.date_time,
-        R.string.language,
-        R.string.about_bike
+            R.string.audio_profiles,
+            R.string.wifi,
+            R.string.data_usage,
+            R.string.bluetooth,
+            R.string.sensor,
+            R.string.ptt,
+            R.string.display,
+            R.string.light,
+            R.string.ringtone,
+            R.string.security_and_password,
+            R.string.date_time,
+            R.string.language,
+            R.string.about_bike
     };
     private static final Integer[] mItemsImage = new Integer[] {
-        R.drawable.sound,
-        R.drawable.wifi_1,
-        R.drawable.data,
-        R.drawable.bluetooth,
-        R.drawable.sensor,
-        R.drawable.ptt,
-        R.drawable.display,
-        R.drawable.light,
-        R.drawable.fingerprint,
-        R.drawable.date,
-        R.drawable.language,
-        R.drawable.bike
+            R.drawable.sound,
+            R.drawable.wifi_1,
+            R.drawable.data,
+            R.drawable.bluetooth,
+            R.drawable.sensor,
+            R.drawable.ptt,
+            R.drawable.display,
+            R.drawable.light,
+            R.drawable.ringtone_in_menu,
+            R.drawable.fingerprint,
+            R.drawable.date,
+            R.drawable.language,
+            R.drawable.bike
     };
-    private static final Class[] classes = {
-        AudioFragment.class,
-        WifiFragment.class,
-        DataUsageFragment.class,
-        BluetoothFragment.class,
-        SensorFragment.class,
-        PttFragment.class,
-        DisplayFragment.class,
-        LightFragment.class,
-        SecurityFragment.class,
-        DateFragment.class,
-        LanguageFragment.class,
-        AboutFragment.class
+    public static final Class[] CLASSES = {
+            AudioFragment.class,
+            WifiFragment.class,
+            DataUsageFragment.class,
+            BluetoothFragment.class,
+            SensorFragment.class,
+            PttFragment.class,
+            DisplayFragment.class,
+            LightFragment.class,
+            RingtoneFragment.class,
+            SecurityFragment.class,
+            DateFragment.class,
+            LanguageFragment.class,
+            AboutFragment.class
     };
 
     @Override
@@ -89,8 +91,7 @@ public class MainFragment extends BaseFragment implements AdapterView.OnItemClic
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,
             long id) {
-        Log.d("wei.gao", "position: "+position);
-        ActivityUtils.startFragmentActivity(getActivity(), classes[position]);
+        ActivityUtils.startFragmentActivity(getActivity(), CLASSES[position]);
     }
 
     private class ListAdapter extends ArrayAdapter<Integer> {

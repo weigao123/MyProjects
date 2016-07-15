@@ -8,11 +8,22 @@
     <uses-permission android:name="android.permission.ACCESS_KEYGUARD_SECURE_STORAGE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <!-- uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" / -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.TYPE_SYSTEM_ALERT" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.STATUS_BAR" />
+    <uses-permission android:name="android.permission.DISABLE_STATUS_BAR"/>
 
     <application
+        android:name=".application.SettingApplication"
         android:allowBackup="true"
         android:icon="@drawable/launcher"
         android:label="@string/app_name"
@@ -20,25 +31,79 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".ui.MainActivity"
-            android:launchMode="singleTop" >
+            android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.DetailActivity" >
         </activity>
+        <activity
+            android:name=".ui.USBConnectActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:taskAffinity="ui.USBConnectActivity" >
+        </activity>
+        <activity android:name=".ui.BatteryLowActivity" 
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
-        <receiver android:name=".broadcast.PttReceiver" >
+        <receiver android:name=".receiver.PttReceiver" >
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="com.lesports.bike.SWITCH_PTT"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.lesports.bike.SWITCH_PTT" />
             </intent-filter>
         </receiver>
 
-        <service android:name=".service.PttService" >
+        <receiver android:name="com.lesports.bike.settings.receiver.BluetoothConnectActivityReceiver" >
+            <intent-filter>
+                <action android:name="android.bluetooth.device.action.PAIRING_REQUEST" />
+                <action android:name="android.bluetooth.device.action.PAIRING_CANCEL" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".service.PttService" />
+
+        <receiver android:name=".light.BikeLightReceiver" >
+            <intent-filter android:priority="2147483647" >
+                <!-- 优先级加最高 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="com.lesports.bike.settings.LIGHT_SWITCH" />
+            </intent-filter>
+        </receiver>
+
+
+        <service android:name=".light.BikeLightService" >
         </service>
+
+        <receiver android:name=".receiver.USBReceiver" >
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_STATE" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receiver.SpeakerReceiver" >
+            <intent-filter>
+                <action android:name="lesports.intent.action.BIKE_SPEAKER" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".speed.SaveModeReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".speed.BikeSpeedService" >
+        </service>
+
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
     <string name="cancel">取消</string>
     <string name="confirm">确定</string>
 
-    <!--home-->
+    <!-- home -->
     <string name="audio_profiles">声音</string>
     <string name="wifi">WLAN</string>
     <string name="data_usage">流量</string>
@@ -22,9 +22,16 @@
     <string name="unbind_bike">解除绑定</string>
     <string name="input_box_title">Lesports</string>
 
+    <!-- data -->
+    <string name="data_on">开</string>
+    <string name="data_off">关</string>
+    <string name="data_of_the_rest">当月剩余流量</string>
+    <string name="data_of_use">当月累计用量</string>
+
     <!-- security -->
     <string name="lockscreen_password">锁屏密码</string>
     <string name="lockscreen_password_tip">在锁屏时需输入密码或指纹</string>
+    <string name="lockscreen_password_tip_no_fingerprint">在锁屏时需输入密码</string>
     <string name="password_manager">密码设定</string>
     <string name="fingerprint_manager">指纹管理</string>
     <string name="password_input">输入密码</string>
@@ -34,6 +41,18 @@
     <string name="password_set_success">密码设定成功</string>
     <string name="password_close">密码关闭</string>
     <string name="password_verify">密码验证</string>
+
+    <!-- fingerprint -->
+    <string name="fp_manager">指纹管理</string>
+    <string name="fp_add_fp">添加指纹</string>
+    <string name="fp_del_fp">确定删除指纹？</string>
+    <string name="fp_enroll_tip">请反复拿起和放下手指\n直到完成100%录入</string>
+    <string name="fp_enroll_tip2">指纹已添加完毕\n您可以使用指纹解锁超级自行车</string>
+    <string name="fp_fp1">指纹一</string>
+    <string name="fp_fp2">指纹二</string>
+    <string name="fp_fp3">指纹三</string>
+    <string name="fp_fp4">指纹四</string>
+    <string name="fp_fp5">指纹五</string>
 
     <!-- wifi -->
     <string name="wifi_please_open">打开WLAN可查看可用网络</string>
@@ -46,6 +65,8 @@
     <string name="wifi_connect">连接</string>
     <string name="wifi_show_password">显示密码</string>
     <string name="wifi_input_password">输入密码</string>
+    <string name="available_devices">可用设备</string>
+    <string name="bluetooth_current_select">当前连接设备：</string>
 
     <!-- ppt -->
     <string name="ptt_please_open">打开PTT对讲功能可选择对讲频道</string>
@@ -53,7 +74,6 @@
     <string name="ptt_channel">频道</string>
     <string name="ptt_on">开</string>
     <string name="ptt_off">关</string>
-
     <string name="about_help">帮助</string>
     <string name="tos_home_title">使用条款</string>
     <string name="tos_item_1">服务条款</string>
@@ -145,8 +165,7 @@
 特别提示：用户在进行注册之前，请确保本人已经完全理解并接受本协议所有条款（尤其是免责条款），
         用户正式注册应表明用户已经完全理解并接受本协议所有条款，尤其是免责和责任限制条款。\n
 </string>
-    <string name="tos_content_2">
-        乐视体育文化发展（北京）有限公司（以下简称乐视）尊重并保护所有使用乐视平台享受各项互联网服务用户的隐私权，
+    <string name="tos_content_2">        乐视体育文化发展（北京）有限公司（以下简称乐视）尊重并保护所有使用乐视平台享受各项互联网服务用户的隐私权，
         乐视会按照本声明的规定使用和披露用户的个人隐私及非个人隐私。乐视将以高度的勤勉、审慎义务对待这些信息，
         除本声明另有规定外，在未征得用户事先许可的情况下，在任何情况下均不会将这些信息对外披露或向第三方提供。
         如用户不同意本声明，可以主动拒绝、取消乐视提供的服务；用户一旦使用乐视服务（包括但不限于用户对乐视所有服务内容、
@@ -253,14 +272,12 @@
 
 9 修订\n
 乐视有权根据实际需要经事先通知后修改本声明，声明修改后将会在网站相关页面上发布。\n
-    </string>
+</string>
 
     <!-- audio -->
     <string name="audio">声音</string>
     <string name="ringtone">铃声</string>
     <string name="music">音乐声</string>
-    <string name="voice_notify">语音提醒</string>
-    <string name="press_voice">按键声</string>
 
     <!-- display -->
     <string name="display_title">显示</string>
@@ -268,18 +285,6 @@
     <string name="brightness_autio_adjust">亮度自动调节</string>
     <string name="save_mode">节电模式</string>
     <string name="save_mode_detail">在非骑行状态下1分钟未操作将自动锁屏</string>
-
-    <!--fingerprint-->
-    <string name="fp_manager">指纹管理</string>
-    <string name="fp_add_fp">添加指纹</string>
-    <string name="fp_del_fp">确定删除指纹？</string>
-    <string name="fp_enroll_tip">请反复拿起和放下手指\n直到完成100%录入</string>
-    <string name="fp_enroll_tip2">指纹已添加完毕\n您可以使用指纹解锁超级自行车</string>
-    <string name="fp_fp1">指纹一</string>
-    <string name="fp_fp2">指纹二</string>
-    <string name="fp_fp3">指纹三</string>
-    <string name="fp_fp4">指纹四</string>
-    <string name="fp_fp5">指纹五</string>
 
     <!-- date_time -->
     <string name="date_time_title">日期和时间</string>
@@ -306,4 +311,29 @@
     <string name="Thursday">星期四</string>
     <string name="Friday">星期五</string>
     <string name="Saturday">星期六</string>
+
+    <!-- ringtone -->
+    <string name="ring_default">开场（默认）</string>
+    <string name="ring_wave">波浪</string>
+    <string name="ring_beacon">灯塔</string>
+    <string name="ring_blink">闪烁</string>
+    <string name="ring_knock">敲击</string>
+
+    <!-- 关于 -->
+    <string name="about_sys_version">系统版本</string>
+    <string name="about_model">设备型号</string>
+    <string name="about_mac">WLAN Mac地址</string>
+    <string name="about_ip">IP地址</string>
+    <string name="about_imei">IMEI信息</string>
+    <string name="about_version_2">版本号</string>
+
+    <!-- usb_connect -->
+    <string name="charge_only">仅充电</string>
+    <string name="media_charge">媒体和充电</string>
+    <!-- 电量 -->
+    <string name="battery_less_than_15">电量不足15%</string>
+    <string name="battery_less_than_5">电量不足5%</string>
+    <string name="battery_to_power_off">电量耗尽即将关机</string>
+    <string name="battery_unlock">解锁</string>
+
 </resources>

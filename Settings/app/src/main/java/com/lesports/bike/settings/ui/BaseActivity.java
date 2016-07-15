@@ -13,8 +13,8 @@ import com.lesports.bike.settings.R;
  */
 public abstract class BaseActivity extends Activity {
     protected abstract Fragment createFragment();
-
     private FragmentManager mFragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -11,18 +11,24 @@ import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.PowerManager;
+import android.os.SystemClock;
 import android.os.SystemProperties;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.lesports.bike.settings.R;
+import com.lesports.bike.settings.application.SettingApplication;
 import com.lesports.bike.settings.ui.BaseFragment;
 import com.lesports.bike.settings.ui.DetailActivity;
-import com.lesports.bike.settings.ui.MainActivity;
 import com.lesports.bike.settings.ui.PttFragment;
 import com.lesports.bike.settings.utils.L;
+import com.lesports.bike.settings.utils.PopupUtils;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import bike.os.media.PTTListener;
 import bike.os.media.PTTManager;
 
 /**
@@ -37,9 +43,11 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
     private PTTManager mPttManager;
     private AudioManager mAudioManager;
     private NotificationManager mNotifManager;
+    private PowerManager mPowerManager;
     private PttServiceListener mPttServiceListener;
     private ArrayList<String> mChannelList;
-
+    private View mPttListeningView;
+    private View mPttSpeakingView;
     public class PttBinder extends Binder {
         public PttService getService() {
             return PttService.this;
@@ -50,11 +58,14 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
     public void onCreate() {
         super.onCreate();
         L.d(TAG, "onCreate");
-
-        mPttManager = (PTTManager) getSystemService("ptt_service");
+        mPttManager = (PTTManager) getSystemService(Context.PTT_SERVICE);
+        mPttManager.startListening(mPttListener);
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mNotifManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         registerReceiver(pttReceiver, new IntentFilter(PTTManager.ACTION_TUNE));
+        mPttListeningView = LayoutInflater.from(SettingApplication.getContext()).inflate(R.layout.ptt_listening, null);
+        mPttSpeakingView = LayoutInflater.from(SettingApplication.getContext()).inflate(R.layout.ptt_speaking, null);
     }
 
     @Override
@@ -64,20 +75,22 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent.hasExtra("isBoot")) {
-            if (SystemProperties.getInt(PttFragment.PTT_STATUS, 0) == 1) {
-                final int channel = SystemProperties.getInt(PttFragment.PTT_CHANNEL_SELECT, 0);
-                L.d(TAG, "Boot: PTT start to open channel:" + channel);
+        if (intent != null) {
+            if (intent.hasExtra("switch")) {
+                if (intent.getBooleanExtra("switch", false)) {
+                    int channel = SystemProperties.getInt(PttFragment.PTT_CHANNEL_SELECT, 0);
+                    openPtt(channel);
+                } else {
+                    closePtt();
+                }
+            } else if (intent.hasExtra("boot")) {
+                int channel = SystemProperties.getInt(PttFragment.PTT_CHANNEL_SELECT, 0);
                 openPtt(channel);
-            } else {
-                L.d(TAG, "Boot: PTT status is 0");
             }
-        } else if (intent.hasExtra("state")) {
-            if (intent.getBooleanExtra("state", false)) {
-                final int channel = SystemProperties.getInt(PttFragment.PTT_CHANNEL_SELECT, 0);
+        } else {
+            if (SystemProperties.getInt(PttFragment.PTT_STATUS, 0) == 1) {
+                int channel = SystemProperties.getInt(PttFragment.PTT_CHANNEL_SELECT, 0);
                 openPtt(channel);
-            } else {
-                closePtt();
             }
         }
         return super.onStartCommand(intent, flags, startId);
@@ -98,8 +111,33 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
         }
     };
 
+    private PTTListener mPttListener = new PTTListener() {
+        @Override
+        public void onStatusChanged(int status) {
+            switch (status) {
+                case PTTManager.STATUS_SPEAKING:
+                    PopupUtils.popupView(SettingApplication.getContext(), mPttSpeakingView);
+                    break;
+                case PTTManager.STATUS_SPEAKING_OVER:
+                    PopupUtils.removeView(SettingApplication.getContext(), mPttSpeakingView);
+                    break;
+                case PTTManager.STATUS_LISTENING:
+                    mPowerManager.wakeUp(SystemClock.uptimeMillis());
+                    PopupUtils.popupTranslucentView(SettingApplication.getContext(), mPttListeningView);
+                    break;
+                case PTTManager.STATUS_LISTENING_OVER:
+                    PopupUtils.removeView(SettingApplication.getContext(), mPttListeningView);
+                    break;
+                case PTTManager.STATUS_CLOSE:
+                    PopupUtils.removeView(SettingApplication.getContext(), mPttListeningView);
+                    PopupUtils.removeView(SettingApplication.getContext(), mPttSpeakingView);
+                    break;
+            }
+        }
+    };
+
     public void openPtt(final int channel) {
-        L.d("openPtt");
+        L.d(TAG, "PTT start to open channel:" + channel);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -175,6 +213,8 @@ public class PttService extends Service implements AudioManager.OnAudioFocusChan
         super.onDestroy();
         unregisterReceiver(pttReceiver);
         L.d(TAG, "onDestroy");
+        mPttManager.stopListening();
+        mPttManager.close();
     }
 
     public void setServiceListener(PttServiceListener pttServiceListener) {

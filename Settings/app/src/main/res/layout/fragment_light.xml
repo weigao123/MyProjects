@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13.3dp"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/le_t_v_super_bike" />
+
+        <ImageView
+            android:id="@+id/head_light_in_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="86.7dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/head_light"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="125.3dp"
+            android:layout_marginTop="56dp"
+            android:src="@drawable/head_light_instructions" />
+
+        <Button
+            android:id="@+id/head_light_button_in_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="228dp"
+            android:layout_marginTop="22.6dp"
+            android:background="@drawable/head_light_button_close" />
+
+        <ImageView
+            android:id="@+id/laser_light_left_in_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="34dp"
+            android:src="@drawable/left"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/laser_light_right_in_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="216dp"
+            android:layout_marginTop="34dp"
+            android:src="@drawable/right"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="206.7dp"
+            android:layout_marginTop="123.3dp"
+            android:src="@drawable/laser_light_instructions" />
+
+        <Button
+            android:id="@+id/head_out_line_light_button_in_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="228dp"
+            android:layout_marginTop="186dp"
+            android:background="@drawable/laser_light_button_close" />
+
+        <ImageView
+            android:id="@+id/tail_light_in_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="78.7dp"
+            android:layout_marginTop="328.8dp"
+            android:src="@drawable/tail_light"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="125.3dp"
+            android:layout_marginTop="323.3dp"
+            android:src="@drawable/tail_light_instructions" />
+
+        <Button
+            android:id="@+id/tail_light_button_in_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="228dp"
+            android:layout_marginTop="338.6dp"
+            android:background="@drawable/tail_light_button_close" />
+    </RelativeLayout>
+
+</LinearLayout>

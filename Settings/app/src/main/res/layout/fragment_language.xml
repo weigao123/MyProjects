@@ -26,7 +26,7 @@
             android:layout_marginRight="13dp"
             android:button="@null"
             android:layout_centerVertical="true"
-            android:background="@drawable/language_cb_bg" />
+            android:background="@drawable/cb_bg" />
     </RelativeLayout>
 
     <View
@@ -57,7 +57,7 @@
             android:layout_marginRight="13dp"
             android:button="@null"
             android:layout_centerVertical="true"
-            android:background="@drawable/language_cb_bg" />
+            android:background="@drawable/cb_bg" />
     </RelativeLayout>
 
 </LinearLayout>

@@ -1,8 +1,11 @@
 
 package com.lesports.bike.settings.ui;
 
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.media.AudioManager;
 import android.media.Ringtone;
@@ -28,6 +31,7 @@ import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Broadcaster;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
@@ -59,16 +63,12 @@ public class AudioFragment extends BaseFragment implements View.OnKeyListener {
 
     private static final int[] SEEKBAR_ID = new int[] {
             R.id.ringtone_seek_bar,
-            R.id.music_seek_bar,
-            R.id.voice_notify_seek_bar,
-            R.id.voice_press_seek_bar
+            R.id.music_seek_bar
     };
 
     private static final int[] SEEKBAR_TYPE = new int[] {
             AudioManager.STREAM_RING,
-            AudioManager.STREAM_MUSIC,
-            AudioManager.STREAM_NOTIFICATION,
-            AudioManager.STREAM_SYSTEM
+            AudioManager.STREAM_MUSIC
     };
 
     private SeekBar[] mSeekBars = new SeekBar[SEEKBAR_ID.length];
@@ -134,7 +134,10 @@ public class AudioFragment extends BaseFragment implements View.OnKeyListener {
 
         private int mLastProgress = -1;
         private SeekBar mSeekBar;
+        private VolumeReciever mVolumeReciever;
 
+        private static final String  VOLUME_CHANGED_ACTION  =
+                "android.media.VOLUME_CHANGED_ACTION";
         private static final int MSG_SET_STREAM_VOLUME = 0;
         private static final int MSG_START_SAMPLE = 1;
         private static final int MSG_STOP_SAMPLE = 2;
@@ -166,6 +169,7 @@ public class AudioFragment extends BaseFragment implements View.OnKeyListener {
             mHandler = new Handler(thread.getLooper(), this);
 
             initSeekBar(seekBar, defaultUri);
+            initVolumeReceiver();
         }
 
         private void initSeekBar(SeekBar seekBar, Uri defaultUri) {
@@ -190,6 +194,24 @@ public class AudioFragment extends BaseFragment implements View.OnKeyListener {
             mRingtone = RingtoneManager.getRingtone(mContext, defaultUri);
             if (mRingtone != null) {
                 mRingtone.setStreamType(mStreamType);
+            }
+        }
+
+        private void initVolumeReceiver() {
+            mVolumeReciever = new VolumeReciever();
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(VOLUME_CHANGED_ACTION);
+            getActivity().registerReceiver(mVolumeReciever, filter);
+        }
+
+        private class VolumeReciever extends BroadcastReceiver {
+
+            @Override
+            public void onReceive(Context arg0, Intent arg1) {
+                // TODO Auto-generated method stub
+                if (arg1.getAction().equals(VOLUME_CHANGED_ACTION)) {
+                    mSeekBar.setProgress(mAudioManager.getStreamVolume(mStreamType));
+                }
             }
         }
 

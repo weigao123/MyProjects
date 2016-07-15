@@ -64,7 +64,6 @@ public class FingerprintControl {
     }
 
     public int deleteFingerprint(int position) {
-        Toast.makeText(mContext, "position: "+position, Toast.LENGTH_SHORT).show();
         return mFingerprintManager.delete(position, "");
     }
 
@@ -112,5 +111,16 @@ public class FingerprintControl {
     }
     public interface FPControlCallback {
         void onEnrollProgress(int progress);
+    }
+
+    public boolean hasFingerPrint() {
+        String info = mFingerprintManager.getInformation();
+        //GFx16M_1.4.04,1.06.33_2,GFCD_GF816M_1.00.07有指纹
+        //￿￿ﯮ/.ff,1.06.33_2,GFCD_GF816M_1.00.07没指纹,前面确实是乱码
+        if (info != null && info.startsWith("GFx")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

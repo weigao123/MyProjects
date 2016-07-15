@@ -3,35 +3,22 @@ package com.lesports.bike.settings.ui;
 
 import android.content.Context;
 import android.database.ContentObserver;
-import android.media.AudioManager;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.preference.VolumePreference.VolumeStore;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
-import android.provider.Settings.System;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-
-import bike.os.security.ElectronicLockManager;
-
 import com.lesports.bike.settings.R;
-import com.lesports.bike.settings.ui.AudioFragment.ExSeekBarVolumizer;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import com.lesports.bike.settings.application.SettingApplication;
+import com.lesports.bike.settings.speed.BikeSpeedManager;
+import com.lesports.bike.settings.utils.AppDataUtils;
 
 /**
  * Created by gwball on 2016/5/25.
@@ -42,10 +29,9 @@ public class DisplayFragment extends BaseFragment implements View.OnClickListene
     private LinearLayout brightnessSection;
     private com.lesports.bike.settings.widget.SwitchButton brightnessAutioAdjust;
     private com.lesports.bike.settings.widget.SwitchButton saveMode;
-    boolean isAutoBrightness = false;
-    private ElectronicLockManager electronicLockManager;
+    private boolean isAutoBrightness = false;
+    private boolean isSaveMode = false;
     private Boolean isBikeRunning = false;
-    private static final int BIKE_IS_RUNNING = -2;
     private static final String TAG = "DisplayFragment";
 
     @Override
@@ -59,6 +45,7 @@ public class DisplayFragment extends BaseFragment implements View.OnClickListene
             brightnessSection.setVisibility(View.VISIBLE);
             brightnessAutioAdjust.setSwitchStatus(false);
         }
+        initSaveModeState(this.getActivity());
         brightnessAutioAdjust.setOnClickListener(this);
         saveMode.setOnClickListener(this);
     }
@@ -67,8 +54,6 @@ public class DisplayFragment extends BaseFragment implements View.OnClickListene
     protected View createView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         displayView = inflater.inflate(R.layout.fragment_display, container, false);
-        electronicLockManager = (ElectronicLockManager) this.getActivity().getSystemService(
-                "electronic_lock_service");
         brightnessSection = (LinearLayout) displayView.findViewById(R.id.brightness_section);
         brightnessAutioAdjust = (com.lesports.bike.settings.widget.SwitchButton) displayView
                 .findViewById(R.id.brightness_autio_adjust_switch);
@@ -94,19 +79,19 @@ public class DisplayFragment extends BaseFragment implements View.OnClickListene
 
         private static final int MSG_SET_BRIGHTNESS = 0;
 
-        // private ContentObserver mBrightnessObserver = new
-        // ContentObserver(mHandler) {
-        // @Override
-        // public void onChange(boolean selfChange) {
-        // super.onChange(selfChange);
-        // if (mSeekBar != null) {
-        // int volume = Settings.System.getInt(getActivity()
-        // .getContentResolver(),
-        // Settings.System.SCREEN_BRIGHTNESS, 255);
-        // mSeekBar.setProgress(volume);
-        // }
-        // }
-        // };
+        private ContentObserver mBrightnessObserver = new
+                ContentObserver(mHandler) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        super.onChange(selfChange);
+                        if (mSeekBar != null) {
+                            int volume = Settings.System.getInt(getActivity()
+                                    .getContentResolver(),
+                                    Settings.System.SCREEN_BRIGHTNESS, 255);
+                            mSeekBar.setProgress(volume);
+                        }
+                    }
+                };
 
         public ExSeekBarBrightness(Context context, SeekBar seekBar) {
             mContext = context;
@@ -127,9 +112,9 @@ public class DisplayFragment extends BaseFragment implements View.OnClickListene
             seekBar.setProgress(mOriginal);
             seekBar.setOnSeekBarChangeListener(this);
 
-            // mContext.getContentResolver().registerContentObserver(
-            // Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS),
-            // false, mBrightnessObserver);
+            mContext.getContentResolver().registerContentObserver(
+                    Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS),
+                    false, mBrightnessObserver);
         }
 
         @Override
@@ -181,6 +166,23 @@ public class DisplayFragment extends BaseFragment implements View.OnClickListene
         }
     }
 
+    private void initSaveModeState(Context context) {
+        if (isSaveMode(context)) {
+            saveMode.setSwitchStatus(true);
+            if (!isBikeRunning()) {
+                Settings.System.putInt(getActivity().getContentResolver(),
+                        android.provider.Settings.System.SCREEN_OFF_TIMEOUT, 60000);
+            } else {
+                Settings.System.putInt(getActivity().getContentResolver(),
+                        android.provider.Settings.System.SCREEN_OFF_TIMEOUT, -1);
+            }
+        } else {
+            saveMode.setSwitchStatus(false);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    android.provider.Settings.System.SCREEN_OFF_TIMEOUT, -1);
+        }
+    }
+
     public boolean isAutoBrightness(Context context) {
         try {
             isAutoBrightness = Settings.System.getInt(
@@ -194,8 +196,15 @@ public class DisplayFragment extends BaseFragment implements View.OnClickListene
         return isAutoBrightness;
     }
 
+    private boolean isSaveMode(Context context) {
+        if (context != null)
+            isSaveMode = AppDataUtils.getSaveMode(context);
+        return isSaveMode;
+    }
+
     public Boolean isBikeRunning() {
-        isBikeRunning = electronicLockManager.lock() == BIKE_IS_RUNNING;
+        isBikeRunning =
+                (BikeSpeedManager.fromApplication(SettingApplication.getContext()).getCurSpeed() > 0);
         return isBikeRunning;
     }
 
@@ -216,12 +225,19 @@ public class DisplayFragment extends BaseFragment implements View.OnClickListene
     }
 
     public void changeSaveMode() {
-        if (!saveMode.isSwitchOn() && !isBikeRunning()) {
+        if (!isSaveMode(getActivity())) {
             saveMode.setSwitchStatus(true);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    android.provider.Settings.System.SCREEN_OFF_TIMEOUT, 60000);
+            AppDataUtils.settSaveMode(getActivity(), true);
+            if (!isBikeRunning()) {
+                Settings.System.putInt(getActivity().getContentResolver(),
+                        android.provider.Settings.System.SCREEN_OFF_TIMEOUT, 60000);
+            } else {
+                Settings.System.putInt(getActivity().getContentResolver(),
+                        android.provider.Settings.System.SCREEN_OFF_TIMEOUT, -1);
+            }
         } else {
             saveMode.setSwitchStatus(false);
+            AppDataUtils.settSaveMode(getActivity(), false);
             Settings.System.putInt(getActivity().getContentResolver(),
                     android.provider.Settings.System.SCREEN_OFF_TIMEOUT, -1);
         }
